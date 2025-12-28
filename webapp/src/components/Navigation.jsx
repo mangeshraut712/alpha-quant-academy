@@ -24,8 +24,8 @@ const Navigation = ({ activeSection, setActiveSection, onReset }) => {
     return (
         <nav className={cn(
             "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 h-16 flex items-center justify-between",
-            isScrolled ? "glass shadow-sm" : "bg-transparent"
-        )}>
+            isScrolled ? "glass shadow-sm saturate-[1.8]" : "bg-white/0 dark:bg-black/0"
+        )} style={isScrolled ? { WebkitBackdropFilter: 'saturate(180%) blur(20px)' } : {}}>
             <div className="flex items-center gap-2 text-foreground">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center">
                     <TrendingUp className="text-white w-5 h-5" />

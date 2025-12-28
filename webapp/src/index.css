@@ -59,6 +59,8 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -67,9 +69,26 @@
   @apply py-24 md:py-32;
 }
 
-/* Apple-style Glassmorphism */
+/* Apple-style Glassmorphism (WWDC Compatible) */
 .glass {
-  @apply bg-white/70 dark:bg-black/70 backdrop-blur-xl border-b border-white/20 dark:border-white/10;
+  background-color: rgba(255, 255, 255, 0.72) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .glass {
+  background-color: rgba(18, 18, 23, 0.72) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Safari Scroll & Focus Taps */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Smooth Focus */

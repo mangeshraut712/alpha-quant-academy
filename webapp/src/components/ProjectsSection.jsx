@@ -8,7 +8,7 @@ const ProjectsSection = () => {
     const [activeProject, setActiveProject] = useState(null);
 
     return (
-        <section id="projects" className="px-6 py-24 bg-secondary/30">
+        <section id="projects" className="px-6 py-24 bg-[#f8fafc] dark:bg-[#0f172a]/50 border-y border-border">
             <div className="max-w-6xl mx-auto">
                 <div className="mb-12">
                     <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Hands-On Practice</span>

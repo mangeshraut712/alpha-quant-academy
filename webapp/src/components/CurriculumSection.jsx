@@ -37,8 +37,8 @@ const CurriculumSection = ({ tracks, onToggle }) => {
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.05 }}
                         className={cn(
-                            "border border-border rounded-2xl overflow-hidden bg-card transition-all",
-                            expandedTrack === track.id ? "ring-2 ring-primary/20 shadow-lg shadow-primary/5" : "hover:border-primary/20"
+                            "border border-border rounded-2xl overflow-hidden bg-card transition-all shadow-sm",
+                            expandedTrack === track.id ? "ring-2 ring-primary/20 shadow-xl shadow-primary/10" : "hover:border-primary/20 hover:shadow-md"
                         )}
                     >
                         <button

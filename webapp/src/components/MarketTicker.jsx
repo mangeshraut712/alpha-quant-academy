@@ -1,12 +1,11 @@
 import { memo, useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
-    TrendingUp, TrendingDown, Activity, DollarSign,
-    RefreshCw, Clock, Wifi, WifiOff
+    TrendingUp, TrendingDown, Activity,
+    RefreshCw, Wifi, WifiOff
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
-// Simulated real-time market data widget
+// Compact Market Ticker
 const MarketTicker = memo(function MarketTicker() {
     const [marketData, setMarketData] = useState([
         { symbol: 'SPY', name: 'S&P 500', price: 478.52, change: 1.24, changePercent: 0.26 },
@@ -20,7 +19,6 @@ const MarketTicker = memo(function MarketTicker() {
     ]);
 
     const [isLive, setIsLive] = useState(true);
-    const [lastUpdate, setLastUpdate] = useState(new Date());
 
     // Simulate real-time updates
     useEffect(() => {
@@ -40,90 +38,65 @@ const MarketTicker = memo(function MarketTicker() {
                     changePercent: Math.round(newPercent * 100) / 100,
                 };
             }));
-            setLastUpdate(new Date());
         }, 3000);
 
         return () => clearInterval(interval);
     }, [isLive]);
 
     return (
-        <section className="py-6 bg-slate-900 dark:bg-slate-950 text-white overflow-hidden">
+        <section className="py-8 bg-slate-900 dark:bg-slate-950 text-white">
             <div className="max-w-6xl mx-auto px-6">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                        <Activity className="w-5 h-5 text-emerald-400" />
-                        <span className="font-bold text-sm">Live Market Data</span>
+                        <Activity className="w-4 h-4 text-emerald-400" />
+                        <span className="font-semibold text-sm">Market Overview</span>
                         <span className={cn(
-                            "flex items-center gap-1.5 text-xs px-2 py-0.5 rounded-full",
+                            "flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full font-bold",
                             isLive ? "bg-emerald-500/20 text-emerald-400" : "bg-slate-700 text-slate-400"
                         )}>
                             {isLive ? <Wifi className="w-3 h-3" /> : <WifiOff className="w-3 h-3" />}
-                            {isLive ? 'Live' : 'Paused'}
+                            {isLive ? 'LIVE' : 'PAUSED'}
                         </span>
                     </div>
-                    <div className="flex items-center gap-3">
-                        <span className="text-xs text-slate-500 flex items-center gap-1">
-                            <Clock className="w-3 h-3" />
-                            {lastUpdate.toLocaleTimeString()}
-                        </span>
-                        <button
-                            onClick={() => setIsLive(!isLive)}
-                            className="p-1.5 rounded-lg hover:bg-slate-800 transition-colors"
-                        >
-                            <RefreshCw className={cn("w-4 h-4", isLive && "animate-spin")} style={{ animationDuration: '3s' }} />
-                        </button>
-                    </div>
+                    <button
+                        onClick={() => setIsLive(!isLive)}
+                        className="p-1.5 rounded-lg hover:bg-slate-800 transition-colors"
+                        aria-label={isLive ? 'Pause updates' : 'Resume updates'}
+                    >
+                        <RefreshCw className={cn("w-4 h-4 text-slate-400", isLive && "animate-spin")} style={{ animationDuration: '3s' }} />
+                    </button>
                 </div>
 
-                {/* Ticker Tape */}
-                <div className="relative">
-                    <div className="flex gap-6 animate-scroll">
-                        {[...marketData, ...marketData].map((stock, i) => (
-                            <div
-                                key={i}
-                                className="flex items-center gap-3 px-4 py-2 bg-slate-800/50 rounded-xl border border-slate-700/50 min-w-max"
-                            >
-                                <div>
-                                    <div className="font-bold text-sm">{stock.symbol}</div>
-                                    <div className="text-[10px] text-slate-500">{stock.name}</div>
-                                </div>
-                                <div className="text-right">
-                                    <div className="font-mono font-bold">
-                                        {stock.symbol === 'BTC' || stock.symbol === 'ETH' ? '$' : ''}
-                                        {stock.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                                    </div>
-                                    <div className={cn(
-                                        "text-xs font-bold flex items-center justify-end gap-1",
-                                        stock.change >= 0 ? "text-emerald-400" : "text-rose-400"
-                                    )}>
-                                        {stock.change >= 0 ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
-                                        {stock.change >= 0 ? '+' : ''}{stock.changePercent.toFixed(2)}%
-                                    </div>
-                                </div>
+                {/* Ticker Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+                    {marketData.map((stock, i) => (
+                        <div
+                            key={i}
+                            className="p-3 bg-slate-800/50 rounded-xl border border-slate-700/50 hover:border-slate-600/50 transition-colors"
+                        >
+                            <div className="flex items-center justify-between mb-1">
+                                <span className="font-bold text-xs">{stock.symbol}</span>
+                                <span className={cn(
+                                    "text-[10px] font-bold flex items-center gap-0.5",
+                                    stock.change >= 0 ? "text-emerald-400" : "text-rose-400"
+                                )}>
+                                    {stock.change >= 0 ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
+                                    {stock.change >= 0 ? '+' : ''}{stock.changePercent.toFixed(1)}%
+                                </span>
                             </div>
-                        ))}
-                    </div>
+                            <div className="font-mono text-sm text-slate-300">
+                                ${stock.price < 1000 ? stock.price.toFixed(2) : stock.price.toLocaleString()}
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
                 {/* Educational Note */}
-                <p className="text-center text-xs text-slate-500 mt-4">
-                    💡 This is simulated data for educational purposes. Learn to fetch real market data in Track 4: Financial Analysis.
+                <p className="text-center text-[10px] text-slate-500 mt-4">
+                    📊 Simulated data for educational purposes • Learn real data fetching in Track 4
                 </p>
             </div>
-
-            <style>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
-        .animate-scroll:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
         </section>
     );
 });

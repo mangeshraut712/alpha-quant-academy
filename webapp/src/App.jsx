@@ -5,12 +5,16 @@ import { Zap, Moon, Sun } from 'lucide-react'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import Footer from './components/Footer'
+import MarketTicker from './components/MarketTicker'
+import SearchCommand from './components/SearchCommand'
+import AIAssistant from './components/AIAssistant'
 
 // Lazy-loaded Components (below the fold)
 const CurriculumSection = lazy(() => import('./components/CurriculumSection'))
 const ProjectsSection = lazy(() => import('./components/ProjectsSection'))
 const DataSection = lazy(() => import('./components/DataSection'))
 const AIAnalystSection = lazy(() => import('./components/AIAnalystSection'))
+const GamificationPanel = lazy(() => import('./components/GamificationPanel'))
 
 // Providers & Stores
 import { ThemeProvider, useTheme } from './lib/theme'
@@ -89,6 +93,9 @@ function AppContent() {
       <main>
         <Hero />
 
+        {/* Live Market Ticker */}
+        <MarketTicker />
+
         {/* Learning Hint Banner */}
         <div className="max-w-6xl mx-auto px-6 py-8">
           <div className="bg-blue-600/15 dark:bg-blue-900/40 p-5 rounded-2xl border border-blue-300 dark:border-blue-700 flex items-center gap-5 shadow-sm">
@@ -98,7 +105,7 @@ function AppContent() {
             <div>
               <p className="text-[10px] font-black text-blue-900 dark:text-blue-100 mb-0.5 tracking-widest uppercase">Learning Hint</p>
               <p className="text-sm text-blue-950 dark:text-blue-50 font-bold leading-relaxed">
-                Click on any module below to mark it as complete and track your progress through the tracks.
+                Click on any module below to mark it as complete. Use ⌘K to quickly search and navigate!
               </p>
             </div>
           </div>
@@ -107,6 +114,10 @@ function AppContent() {
         {/* Lazy-loaded sections with Suspense */}
         <Suspense fallback={<SectionSkeleton />}>
           <CurriculumSection tracks={tracksWithStatus} onToggle={handleToggleModule} />
+        </Suspense>
+
+        <Suspense fallback={<SectionSkeleton />}>
+          <GamificationPanel />
         </Suspense>
 
         <Suspense fallback={<SectionSkeleton />}>
@@ -127,7 +138,11 @@ function AppContent() {
       </main>
 
       <Footer />
+
+      {/* Floating UI Elements */}
       <ThemeToggle />
+      <SearchCommand />
+      <AIAssistant />
     </div>
   )
 }

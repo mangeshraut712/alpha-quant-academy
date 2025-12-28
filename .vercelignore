@@ -1,0 +1,15 @@
+# Ignore Python environment and requirements for Vercel hosting
+# These are only for local development/training
+requirements.txt
+curriculum/
+projects/
+scripts/
+data/
+outputs/
+exercises/
+docs/
+binder/
+.git
+.github
+node_modules
+webapp/node_modules

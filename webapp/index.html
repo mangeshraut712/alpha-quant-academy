@@ -3,68 +3,90 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- Theme Color -->
   <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
 
-  <!-- SEO Meta Tags -->
-  <title>Alpha Quant Academy | Python Finance Mastery</title>
-  <meta name="description"
-    content="Master quantitative finance with Python. 26+ modules, 22 Jupyter notebooks, AI-powered simulations. From basics to ML trading strategies." />
-  <meta name="keywords"
-    content="Python, Finance, Quant, Trading, Machine Learning, AI, JPMorgan, Jupyter, Data Science" />
-  <meta name="author" content="Alpha Quant Academy" />
+  <!-- SEO -->
+  <title>Alpha Quant Academy | Python Finance</title>
+  <meta name="description" content="Master quantitative finance with Python. 26+ modules, AI-powered learning." />
 
-  <!-- Open Graph / Social -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://alpha-quant-academy.vercel.app/" />
-  <meta property="og:title" content="Alpha Quant Academy | Python Finance Mastery" />
-  <meta property="og:description"
-    content="Master quantitative finance with Python. 26+ modules, AI-powered simulations, and industry-grade projects." />
-  <meta property="og:image" content="/og-image.png" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Alpha Quant Academy | Python Finance Mastery" />
-  <meta name="twitter:description"
-    content="Master quantitative finance with Python. From basics to ML trading strategies." />
+  <meta property="og:title" content="Alpha Quant Academy" />
+  <meta property="og:description" content="Master Python for Quantitative Finance" />
 
   <!-- PWA -->
   <link rel="manifest" href="/manifest.webmanifest" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="AQA" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-  <!-- Fonts - Using Variable Fonts for 2025 -->
+  <!-- Preconnect to external resources -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet" />
 
-  <!-- Preload Critical Assets -->
-  <link rel="preload" as="style" href="/src/index.css" />
+  <!-- Font loading with display=swap for faster render -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Color Scheme -->
-  <meta name="color-scheme" content="light dark" />
-
+  <!-- Critical CSS inline -->
   <style>
-    /* Critical CSS for instant load */
+    /* Prevent FOUC and provide instant feedback */
     html {
-      background: #ffffff;
+      background: #fff;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     @media (prefers-color-scheme: dark) {
       html {
         background: #0f172a;
+        color: #f8fafc;
       }
     }
 
-    .loading-skeleton {
-      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    #root {
+      min-height: 100vh;
+    }
+
+    /* Loading skeleton */
+    .initial-loader {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .initial-loader {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      }
+    }
+
+    .loader-content {
+      text-align: center;
+    }
+
+    .loader-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      margin: 0 auto 16px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .loader-text {
+      font-size: 14px;
+      color: #64748b;
+      font-weight: 500;
     }
 
     @keyframes pulse {
@@ -72,28 +94,62 @@
       0%,
       100% {
         opacity: 1;
+        transform: scale(1);
       }
 
       50% {
-        opacity: 0.5;
+        opacity: 0.7;
+        transform: scale(0.98);
+      }
+    }
+
+    /* Animation classes */
+    .animate-fade-up {
+      animation: fadeUp 0.5s ease-out forwards;
+    }
+
+    .animate-slide-down {
+      animation: slideDown 0.3s ease-out forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   </style>
 </head>
 
-<body class="antialiased font-sans">
+<body class="antialiased">
   <div id="root">
-    <!-- Loading State -->
-    <div
-      style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f8fafc 0%,#e2e8f0 100%)">
-      <div style="text-align:center">
-        <div
-          style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#3b82f6,#6366f1);margin:0 auto 16px;animation:pulse 2s infinite">
-        </div>
-        <div style="font-size:14px;color:#64748b;font-weight:500">Loading Academy...</div>
+    <!-- Instant loading state -->
+    <div class="initial-loader">
+      <div class="loader-content">
+        <div class="loader-icon"></div>
+        <div class="loader-text">Loading Academy...</div>
       </div>
     </div>
   </div>
+
+  <!-- Main app script -->
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

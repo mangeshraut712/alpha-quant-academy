@@ -5,20 +5,20 @@ import { VitePWA } from 'vite-plugin-pwa'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      // Faster refresh for Safari
+      fastRefresh: true,
+    }),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
       manifest: {
         name: 'Alpha Quant Academy',
         short_name: 'AQA',
-        description: 'Master Python for Quantitative Finance with AI-powered learning',
+        description: 'Master Python for Quantitative Finance',
         theme_color: '#2563eb',
-        background_color: '#0f172a',
+        background_color: '#ffffff',
         display: 'standalone',
-        orientation: 'portrait',
-        scope: '/',
-        start_url: '/',
         icons: [
           {
             src: '/icons/icon-192x192.png',
@@ -28,8 +28,7 @@ export default defineConfig({
           {
             src: '/icons/icon-512x512.png',
             sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable'
+            type: 'image/png'
           }
         ]
       },
@@ -43,10 +42,18 @@ export default defineConfig({
               cacheName: 'google-fonts-cache',
               expiration: {
                 maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
-              },
-              cacheableResponse: {
-                statuses: [0, 200]
+                maxAgeSeconds: 60 * 60 * 24 * 365
+              }
+            }
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'gstatic-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365
               }
             }
           }
@@ -55,28 +62,44 @@ export default defineConfig({
     })
   ],
   build: {
-    target: 'esnext',
+    target: 'es2020', // Better Safari compatibility
     minify: 'esbuild',
-    cssMinify: 'lightningcss',
+    cssMinify: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'motion': ['framer-motion'],
-          'icons': ['lucide-react']
+        // Aggressive code splitting for faster initial load
+        manualChunks: (id) => {
+          // React core - load immediately
+          if (id.includes('react-dom') || id.includes('react/')) {
+            return 'react'
+          }
+          // Framer Motion - lazy load
+          if (id.includes('framer-motion')) {
+            return 'motion'
+          }
+          // Icons - lazy load
+          if (id.includes('lucide-react')) {
+            return 'icons'
+          }
+          // State management
+          if (id.includes('zustand')) {
+            return 'state'
+          }
         }
       }
-    }
+    },
+    // Reduce chunk size warnings
+    chunkSizeWarningLimit: 500,
   },
-  css: {
-    transformer: 'lightningcss',
-    lightningcss: {
-      drafts: {
-        customMedia: true
-      }
-    }
-  },
+  // Optimize dependencies
   optimizeDeps: {
-    include: ['react', 'react-dom', 'framer-motion', 'lucide-react']
+    include: ['react', 'react-dom'],
+    exclude: ['framer-motion'] // Lazy load this
+  },
+  // Faster dev server
+  server: {
+    warmup: {
+      clientFiles: ['./src/App.jsx', './src/components/Hero.jsx', './src/components/Navigation.jsx']
+    }
   }
 })

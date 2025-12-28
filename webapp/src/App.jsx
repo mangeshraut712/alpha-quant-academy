@@ -1,4 +1,4 @@
-import { useState, useCallback, memo, lazy, Suspense } from 'react'
+import { useCallback, memo, lazy, Suspense } from 'react'
 import { Zap, Moon, Sun } from 'lucide-react'
 
 // Critical Components (loaded immediately)

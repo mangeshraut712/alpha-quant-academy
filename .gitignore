@@ -109,3 +109,13 @@ yarn.lock
 .DS_Store
 coverage/
 notebooks/mymodule.py
+
+# Training Artifacts
+outputs/
+*.png
+*.jpg
+*.jpeg
+.DS_Store
+.vscode/
+.idea/
+*.log

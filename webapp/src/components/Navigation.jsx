@@ -59,7 +59,7 @@ const Navigation = ({ activeSection, setActiveSection, onReset }) => {
                     Fresh Start
                 </button>
                 <a
-                    href="https://github.com/jpmorganchase/python-training"
+                    href="https://github.com/mangeshraut712/alpha-quant-academy"
                     target="_blank"
                     className="hidden md:flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full border border-border hover:bg-secondary transition-all"
                 >

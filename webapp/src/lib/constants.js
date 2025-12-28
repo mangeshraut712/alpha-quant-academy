@@ -72,7 +72,10 @@ export const curriculumData = {
         "curriculum/legacy/3_flights.ipynb",
         "curriculum/legacy/4_webapi.ipynb",
         "curriculum/legacy/5_website.ipynb",
-        "curriculum/legacy/6_financial_data.ipynb"
+        "curriculum/legacy/6_financial_data.ipynb",
+        "curriculum/legacy/7_advanced_plotting.ipynb",
+        "curriculum/legacy/8_altman_z_double_prime.ipynb",
+        "curriculum/legacy/9_3d_plotting.ipynb"
     ]
 };
 

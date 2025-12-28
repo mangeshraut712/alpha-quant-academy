@@ -33,7 +33,7 @@ const Hero = () => (
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
                     <a
-                        href="http://mybinder.org/v2/gh/jpmorganchase/python-training/main?urlpath=lab"
+                        href="http://mybinder.org/v2/gh/mangeshraut712/alpha-quant-academy/main?urlpath=lab"
                         target="_blank"
                         className="h-12 px-8 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-all"
                     >

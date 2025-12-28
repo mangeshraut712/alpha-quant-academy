@@ -82,17 +82,13 @@ const ProjectsSection = () => {
                                         <BookOpen className="w-10 h-10 text-primary mb-4" />
                                         <h4 className="font-bold text-lg mb-2">How to Run</h4>
                                         <p className="text-xs text-muted-foreground mb-6">
-                                            {project.title.includes('AI')
-                                                ? "Run 'python enhanced_engine.py' in the project folder to start the multi-agent simulation."
-                                                : project.title.includes('Dashboard')
-                                                    ? "Run 'streamlit run app.py' to launch the interactive financial metrics dashboard."
-                                                    : "Run 'python stock_tracker.py' to start the portfolio management system."}
+                                            Execute the following command in your terminal to launch this {project.title.toLowerCase()} tool:
                                         </p>
                                         <div className="flex flex-col gap-2 w-full">
                                             <div className="bg-white/10 p-2 rounded text-[9px] font-mono text-white/70 mb-2 truncate">
                                                 $ {project.command}
                                             </div>
-                                            <a href="http://mybinder.org/v2/gh/jpmorganchase/python-training/main?urlpath=lab" target="_blank" className="bg-primary text-primary-foreground h-9 flex items-center justify-center rounded-lg font-bold text-xs">
+                                            <a href="http://mybinder.org/v2/gh/mangeshraut712/alpha-quant-academy/main?urlpath=lab" target="_blank" className="bg-primary text-primary-foreground h-9 flex items-center justify-center rounded-lg font-bold text-xs">
                                                 Open Project Files
                                             </a>
                                             <button className="h-9 border border-border rounded-lg text-xs font-bold hover:bg-secondary">

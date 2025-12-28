@@ -100,7 +100,7 @@ const DataSection = () => {
                             <p className="text-slate-400 italic">Showing top 5 rows for validation. For full analysis, launch the Jupyter Notebook environment.</p>
                             <div className="flex gap-4">
                                 <button className="text-blue-400 font-bold hover:underline underline-offset-4">Full Dataset CSV</button>
-                                <button className="text-white font-bold bg-blue-600 px-4 py-2 rounded-lg">Open in Binder</button>
+                                <button className="text-white font-bold bg-blue-600 px-4 py-2 rounded-lg" onClick={() => window.open('http://mybinder.org/v2/gh/mangeshraut712/alpha-quant-academy/main?urlpath=lab', '_blank')}>Open in Binder</button>
                             </div>
                         </div>
                     </motion.div>

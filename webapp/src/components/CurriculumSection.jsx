@@ -11,10 +11,11 @@ const CurriculumSection = ({ tracks, onToggle }) => {
     const totalModules = tracks.flatMap(t => t.modules).length;
 
     return (
-        <section id="curriculum" className="px-6 py-24 max-w-6xl mx-auto">
-            <div className="mb-12">
-                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Learning Path</span>
-                <h2 className="text-4xl font-bold tracking-tighter mt-2 mb-4">Curriculum Progress</h2>
+        <section id="curriculum" className="px-6 py-24 max-w-6xl mx-auto relative overflow-hidden">
+            <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-blue-500/5 dark:bg-blue-600/5 rounded-full blur-[100px] -z-10" />
+            <div className="mb-12 relative">
+                <span className="text-xs font-bold uppercase tracking-widest text-blue-600">Learning Path</span>
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mt-2 mb-4 text-slate-900 dark:text-white">Curriculum Progress</h2>
                 <div className="flex items-center gap-4">
                     <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">
                         <motion.div

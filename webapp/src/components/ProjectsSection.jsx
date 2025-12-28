@@ -8,11 +8,12 @@ const ProjectsSection = () => {
     const [activeProject, setActiveProject] = useState(null);
 
     return (
-        <section id="projects" className="px-6 py-24 bg-slate-50 dark:bg-slate-900/50 border-y border-border">
-            <div className="max-w-6xl mx-auto">
+        <section id="projects" className="px-6 py-24 relative overflow-hidden">
+            <div className="absolute top-1/2 left-0 w-1/3 h-1/2 bg-emerald-500/5 dark:bg-emerald-600/5 rounded-full blur-[100px] -z-10" />
+            <div className="max-w-6xl mx-auto relative">
                 <div className="mb-12">
-                    <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Hands-On Practice</span>
-                    <h2 className="text-4xl font-bold tracking-tighter mt-2">Core Projects</h2>
+                    <span className="text-xs font-bold uppercase tracking-widest text-emerald-600">Hands-On Practice</span>
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mt-2">Core Projects</h2>
                     <p className="text-muted-foreground mt-2 text-sm">Hover over a project to see how to start it!</p>
                 </div>
 

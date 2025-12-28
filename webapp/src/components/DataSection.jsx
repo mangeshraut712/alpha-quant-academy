@@ -8,11 +8,12 @@ const DataSection = () => {
     const [activeDataset, setActiveDataset] = useState(null);
 
     return (
-        <section id="data" className="px-6 py-24 max-w-6xl mx-auto">
-            <div className="mb-12 flex flex-col md:flex-row justify-between items-end gap-6">
+        <section id="data" className="px-6 py-24 max-w-6xl mx-auto relative overflow-hidden">
+            <div className="absolute bottom-0 right-1/4 w-1/2 h-1/2 bg-indigo-500/5 dark:bg-indigo-600/5 rounded-full blur-[100px] -z-10" />
+            <div className="mb-12 flex flex-col md:flex-row justify-between items-end gap-6 relative">
                 <div>
-                    <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">The Workbench</span>
-                    <h2 className="text-4xl font-bold tracking-tighter mt-2">Sample Datasets</h2>
+                    <span className="text-xs font-bold uppercase tracking-widest text-indigo-600">The Workbench</span>
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mt-2 text-slate-900 dark:text-white">Sample Datasets</h2>
                     <p className="text-muted-foreground mt-2">Realistic financial data for hands-on practice</p>
                 </div>
                 <div className="text-xs font-bold px-4 py-2 rounded-lg bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 shadow-sm">

@@ -68,13 +68,13 @@ export default function App() {
         <Hero />
 
         <div className="max-w-6xl mx-auto px-6 py-8">
-          <div className="bg-blue-50/80 dark:bg-slate-900/80 p-5 rounded-2xl border border-blue-200/50 dark:border-slate-800 flex items-center gap-5 shadow-xl shadow-blue-500/5 -webkit-backdrop-filter blur-md backdrop-filter blur-md">
-            <div className="flex-shrink-0 p-2.5 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl shadow-lg ring-4 ring-blue-500/10">
-              <Zap className="w-5 h-5 text-white" />
+          <div className="bg-blue-600/10 dark:bg-blue-900/20 p-4 rounded-2xl border border-blue-200 dark:border-blue-800/50 flex items-center gap-4 shadow-sm saturate-[1.1]">
+            <div className="flex-shrink-0 p-2 bg-blue-600 rounded-xl shadow-lg ring-4 ring-blue-500/10">
+              <Zap className="w-4 h-4 text-white" />
             </div>
             <div>
-              <p className="text-sm font-extrabold text-blue-900 dark:text-blue-100 mb-0.5 tracking-tight">Learning Hint:</p>
-              <p className="text-xs text-blue-800 dark:text-slate-300 font-bold leading-relaxed opacity-90">Click on any module in the curriculum to mark it as complete and track your journey through the tracks!</p>
+              <p className="text-xs font-bold text-blue-900 dark:text-blue-200 mb-0.5 tracking-tight uppercase opacity-60">Learning Hint</p>
+              <p className="text-sm text-blue-800 dark:text-blue-100 font-semibold leading-relaxed">Click on any module below to mark it as complete and track your progress through the tracks.</p>
             </div>
           </div>
         </div>

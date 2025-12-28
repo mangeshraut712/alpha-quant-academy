@@ -26,7 +26,7 @@ const Hero = () => (
                     <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Academy</span>
                 </h1>
 
-                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
+                <p className="text-lg md:text-xl text-foreground/70 dark:text-white/70 max-w-2xl mx-auto mb-12">
                     Master quantitative finance with Python. From basics to ML-powered trading strategies.
                     Now with Alpha Arena-inspired multi-model AI analysis.
                 </p>
@@ -61,9 +61,9 @@ const Hero = () => (
                             transition={{ delay: 0.2 + i * 0.1 }}
                             className="p-4 rounded-2xl bg-card border border-border"
                         >
-                            <stat.icon className="w-5 h-5 text-muted-foreground mb-2" />
+                            <stat.icon className="w-5 h-5 text-primary mb-2" />
                             <div className="text-2xl font-bold">{stat.value}</div>
-                            <div className="text-xs text-muted-foreground">{stat.label}</div>
+                            <div className="text-xs text-foreground/60 font-medium">{stat.label}</div>
                         </motion.div>
                     ))}
                 </div>

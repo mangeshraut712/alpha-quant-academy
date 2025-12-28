@@ -137,7 +137,7 @@ const AIAnalystSection = ({ isSimulating, simProgress, onStartSim }) => {
                                                     </div>
                                                     <div>
                                                         <div className="font-bold text-xs group-hover:text-violet-400 transition-colors uppercase tracking-tight">{model.name}</div>
-                                                        <div className="text-[10px] text-slate-400 font-medium">{model.focus}</div>
+                                                        <div className="text-[10px] text-white/70 font-medium">{model.focus}</div>
                                                     </div>
                                                 </div>
                                             ))}
@@ -158,7 +158,7 @@ const AIAnalystSection = ({ isSimulating, simProgress, onStartSim }) => {
                                                     <span className="text-xl">{control.icon}</span>
                                                     <div>
                                                         <div className="font-bold text-xs tracking-tight">{control.name}</div>
-                                                        <div className="text-[10px] text-slate-400 font-medium">{control.desc}</div>
+                                                        <div className="text-[10px] text-white/70 font-medium">{control.desc}</div>
                                                     </div>
                                                 </div>
                                             ))}
@@ -206,7 +206,7 @@ const AIAnalystSection = ({ isSimulating, simProgress, onStartSim }) => {
                                 <button className="h-10 px-6 rounded-full border border-white/20 text-white/80 font-semibold text-xs hover:bg-white hover:text-black hover:border-white transition-all flex items-center gap-2 group">
                                     Learning Guide <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                 </button>
-                                <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest bg-white/5 px-4 py-2 rounded-full border border-white/5">
+                                <div className="text-[10px] font-bold text-white uppercase tracking-widest bg-white/10 px-4 py-2 rounded-full border border-white/20">
                                     Next Lab: Multi-agent optimization
                                 </div>
                             </div>

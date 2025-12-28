@@ -38,9 +38,9 @@ const ProjectsSection = () => {
                                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                                 <p className="text-sm text-muted-foreground mb-4 flex-1">{project.description}</p>
 
-                                <div className="bg-slate-950/50 p-3 rounded-lg border border-border mb-4 overflow-hidden">
-                                    <div className="text-[9px] font-bold text-slate-500 uppercase mb-2">Code Snippet</div>
-                                    <pre className="text-[10px] text-slate-300 font-mono leading-relaxed truncate">
+                                <div className="bg-slate-900 p-3 rounded-lg border border-white/10 mb-4 overflow-hidden shadow-inner">
+                                    <div className="text-[9px] font-bold text-white/50 uppercase mb-2 tracking-wider">Code Snippet</div>
+                                    <pre className="text-[10px] text-white font-mono leading-relaxed truncate">
                                         {project.preview}
                                     </pre>
                                 </div>
@@ -65,8 +65,8 @@ const ProjectsSection = () => {
                                     ))}
                                 </div>
 
-                                <div className="text-[10px] font-mono text-muted-foreground flex items-center gap-1.5 mt-auto pt-4 border-t border-border">
-                                    <FileText className="w-3 h-3" /> {project.file}
+                                <div className="text-[10px] font-mono text-foreground/70 dark:text-white/70 flex items-center gap-1.5 mt-auto pt-4 border-t border-border font-medium">
+                                    <FileText className="w-3 h-3 text-primary/60" /> {project.file}
                                 </div>
                             </div>
 

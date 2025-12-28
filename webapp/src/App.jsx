@@ -68,13 +68,13 @@ export default function App() {
         <Hero />
 
         <div className="max-w-6xl mx-auto px-6 py-8">
-          <div className="bg-blue-50 dark:bg-blue-950/20 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30 flex items-center gap-4 shadow-sm">
+          <div className="bg-blue-100 dark:bg-blue-900/40 p-4 rounded-xl border border-blue-200 dark:border-blue-800/50 flex items-center gap-4 shadow-sm">
             <div className="p-2 bg-blue-600 rounded-lg shadow-lg">
               <Zap className="w-5 h-5 text-white" />
             </div>
             <div>
-              <p className="text-sm font-bold text-blue-900 dark:text-blue-100">Learning Hint:</p>
-              <p className="text-xs text-blue-800 dark:text-blue-300">Click on any module in the curriculum to mark it as complete and track your journey through the tracks!</p>
+              <p className="text-sm font-bold text-blue-900 dark:text-blue-200">Learning Hint:</p>
+              <p className="text-xs text-blue-800 dark:text-blue-300 font-medium">Click on any module in the curriculum to mark it as complete and track your journey through the tracks!</p>
             </div>
           </div>
         </div>

@@ -1,16 +1,120 @@
-# React + Vite
+# Alpha Quant Academy - Web Interface
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Modern React 19 + Vite 6 Progressive Web App**
 
-Currently, two official plugins are available:
+A cutting-edge educational platform for mastering Python in quantitative finance, built with the latest 2025 web technologies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack (2025 Edition)
 
-## React Compiler
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **React** | 19.0.0 | UI Framework with Concurrent Features |
+| **Vite** | 6.0.5 | Next-gen Build Tool with Lightning CSS |
+| **Tailwind CSS** | 3.4.17 | Utility-first CSS with Container Queries |
+| **Framer Motion** | 11.15.0 | Production-grade Animations |
+| **Zustand** | 5.0.2 | Lightweight State Management |
+| **TanStack Query** | 5.62.0 | Data Fetching & Caching |
+| **PWA** | ✓ | Offline-capable Progressive Web App |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ 2025 Features
 
-## Expanding the ESLint configuration
+### Architecture
+- **React 19** - Concurrent rendering, Suspense, Server Components ready
+- **Vite 6** - Lightning-fast HMR, ESNext target, tree-shaking
+- **Zustand** - Zero-boilerplate state with persistence
+- **Lightning CSS** - 10x faster CSS processing
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### User Experience
+- **PWA Support** - Install as native app, works offline
+- **Dark Mode** - System preference + manual toggle
+- **Reduced Motion** - Respects `prefers-reduced-motion`
+- **View Transitions API** - Native-like page transitions (Chrome 111+)
+
+### Performance
+- **Code Splitting** - Automatic vendor chunking
+- **Tree Shaking** - Dead code elimination
+- **Lazy Loading** - Dynamic imports for routes
+- **Service Worker** - Intelligent caching strategy
+
+### Accessibility
+- **WCAG 2.1 AA** - Full keyboard navigation
+- **Focus Management** - Visible focus indicators
+- **Screen Reader** - Semantic HTML + ARIA labels
+- **Color Contrast** - 4.5:1 minimum ratio
+
+## 📦 Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Development server (port 5173)
+npm run dev
+
+# Production build
+npm run build
+
+# Preview production
+npm run preview
+```
+
+## 🎨 Design System
+
+### Colors (CSS Custom Properties)
+- Light/Dark theme via CSS variables
+- OKLCH color space for perceptual uniformity
+- Glow effects with `--glow-color` token
+
+### Typography
+- **Inter Variable** - Headlines & body
+- **JetBrains Mono** - Code blocks
+- `text-balance` for headline wrapping
+
+### Animations
+- `fade-in`, `fade-up`, `slide-up`
+- `shimmer` for loading states
+- `glow` for interactive elements
+- Spring easing for natural motion
+
+## 📱 PWA Capabilities
+
+The app can be installed on any device:
+
+1. **Desktop Chrome/Edge**: Click install icon in address bar
+2. **Mobile Safari**: Share → Add to Home Screen
+3. **Android**: Banner prompt or Menu → Install
+
+Offline features:
+- All static assets cached
+- Google Fonts cached for 1 year
+- Curriculum progress persisted locally
+
+## 🔧 Development
+
+### Environment
+- Node.js 18, 20, or 22+
+- npm 9+ or pnpm 8+
+
+### Scripts
+- `npm run dev` - Start dev server
+- `npm run build` - Production build
+- `npm run preview` - Preview production
+- `npm run lint` - ESLint fix
+
+### File Structure
+```
+src/
+├── components/     # UI Components
+├── lib/
+│   ├── constants.js   # Curriculum data
+│   ├── store.js       # Zustand stores
+│   ├── theme.jsx      # Theme provider
+│   └── utils.js       # Utilities
+├── App.jsx         # Root component
+├── main.jsx        # Entry point
+└── index.css       # Global styles
+```
+
+## 📄 License
+
+Apache 2.0 - Based on JPMorgan Chase Python Training

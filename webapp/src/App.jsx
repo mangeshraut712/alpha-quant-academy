@@ -1,95 +1,111 @@
-import React, { useState } from 'react';
-import { Zap } from 'lucide-react';
+import { useState, useCallback, memo } from 'react'
+import { Zap, Moon, Sun } from 'lucide-react'
 
 // Components
-import Navigation from './components/Navigation';
-import Hero from './components/Hero';
-import CurriculumSection from './components/CurriculumSection';
-import ProjectsSection from './components/ProjectsSection';
-import DataSection from './components/DataSection';
-import AIAnalystSection from './components/AIAnalystSection';
-import Footer from './components/Footer';
+import Navigation from './components/Navigation'
+import Hero from './components/Hero'
+import CurriculumSection from './components/CurriculumSection'
+import ProjectsSection from './components/ProjectsSection'
+import DataSection from './components/DataSection'
+import AIAnalystSection from './components/AIAnalystSection'
+import Footer from './components/Footer'
 
-// Data
-import { curriculumData } from './lib/constants';
+// Providers & Stores
+import { ThemeProvider, useTheme } from './lib/theme'
+import { useCurriculumStore, useSimulationStore, useUIStore } from './lib/store'
+import { curriculumData } from './lib/constants'
 
-export default function App() {
-  const [activeSection, setActiveSection] = useState('home');
-  const [tracks, setTracks] = useState(curriculumData.tracks.map(t => ({
-    ...t,
-    modules: t.modules.map(m => ({ ...m, status: 'pending' }))
-  })));
-  const [isSimulating, setIsSimulating] = useState(false);
-  const [simProgress, setSimProgress] = useState(0);
+// Theme Toggle Button
+const ThemeToggle = memo(function ThemeToggle() {
+  const { theme, toggleTheme, isDark } = useTheme()
 
-  const handleReset = () => {
+  return (
+    <button
+      onClick={toggleTheme}
+      className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-card border border-border shadow-lg flex items-center justify-center hover:scale-110 transition-transform glow-hover"
+      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+    >
+      {isDark ? (
+        <Sun className="w-5 h-5 text-amber-500" />
+      ) : (
+        <Moon className="w-5 h-5 text-slate-700" />
+      )}
+    </button>
+  )
+})
+
+// Main App Content
+function AppContent() {
+  const { activeSection, setActiveSection } = useUIStore()
+  const { toggleModule, isModuleComplete, resetProgress } = useCurriculumStore()
+  const { isSimulating, progress, startSimulation } = useSimulationStore()
+
+  // Transform tracks with completion status from store
+  const tracksWithStatus = curriculumData.tracks.map(track => ({
+    ...track,
+    modules: track.modules.map(module => ({
+      ...module,
+      status: isModuleComplete(track.id, module.name) ? 'complete' : 'pending'
+    }))
+  }))
+
+  const handleReset = useCallback(() => {
     if (confirm("Reset all progress for a fresh start?")) {
-      setTracks(curriculumData.tracks.map(t => ({
-        ...t,
-        modules: t.modules.map(m => ({ ...m, status: 'pending' }))
-      })));
+      resetProgress()
     }
-  };
+  }, [resetProgress])
 
-  const toggleModule = (trackId, moduleName) => {
-    setTracks(prev => prev.map(t => {
-      if (t.id !== trackId) return t;
-      return {
-        ...t,
-        modules: t.modules.map(m => {
-          if (m.name !== moduleName) return m;
-          const nextStatus = m.status === 'complete' ? 'pending' : 'complete';
-          return { ...m, status: nextStatus };
-        })
-      };
-    }));
-  };
-
-  const startSimulation = () => {
-    setIsSimulating(true);
-    setSimProgress(0);
-    const interval = setInterval(() => {
-      setSimProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => setIsSimulating(false), 2000);
-          return 100;
-        }
-        return prev + 5;
-      });
-    }, 100);
-  };
+  const handleToggleModule = useCallback((trackId, moduleName) => {
+    toggleModule(trackId, moduleName)
+  }, [toggleModule])
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navigation activeSection={activeSection} setActiveSection={setActiveSection} onReset={handleReset} />
+      <Navigation
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+        onReset={handleReset}
+      />
 
       <main>
         <Hero />
 
+        {/* Learning Hint Banner */}
         <div className="max-w-6xl mx-auto px-6 py-8">
-          <div className="bg-blue-600/15 dark:bg-blue-900/40 p-5 rounded-2xl border border-blue-300 dark:border-blue-700 flex items-center gap-5 shadow-sm">
+          <div className="bg-blue-600/15 dark:bg-blue-900/40 p-5 rounded-2xl border border-blue-300 dark:border-blue-700 flex items-center gap-5 shadow-sm card-interactive">
             <div className="flex-shrink-0 p-2.5 bg-blue-600 rounded-xl shadow-lg ring-4 ring-blue-500/20">
               <Zap className="w-5 h-5 text-white" />
             </div>
             <div>
               <p className="text-[10px] font-black text-blue-900 dark:text-blue-100 mb-0.5 tracking-widest uppercase">Learning Hint</p>
-              <p className="text-sm text-blue-950 dark:text-blue-50 font-bold leading-relaxed">Click on any module below to mark it as complete and track your progress through the tracks.</p>
+              <p className="text-sm text-blue-950 dark:text-blue-50 font-bold leading-relaxed text-balance">
+                Click on any module below to mark it as complete and track your progress through the tracks.
+              </p>
             </div>
           </div>
         </div>
 
-        <CurriculumSection tracks={tracks} onToggle={toggleModule} />
+        <CurriculumSection tracks={tracksWithStatus} onToggle={handleToggleModule} />
         <ProjectsSection />
         <DataSection />
         <AIAnalystSection
           isSimulating={isSimulating}
-          simProgress={simProgress}
+          simProgress={progress}
           onStartSim={startSimulation}
         />
       </main>
 
       <Footer />
+      <ThemeToggle />
     </div>
-  );
+  )
+}
+
+// Root App with Providers
+export default function App() {
+  return (
+    <ThemeProvider defaultTheme="system" storageKey="aqa-theme">
+      <AppContent />
+    </ThemeProvider>
+  )
 }

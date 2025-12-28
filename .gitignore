@@ -112,7 +112,10 @@ notebooks/mymodule.py
 
 # Training Artifacts
 outputs/
+# Ignore generated images but allow logos
 *.png
+!webapp/public/assets/logo.png
+!assets/images/*.png
 *.jpg
 *.jpeg
 .DS_Store

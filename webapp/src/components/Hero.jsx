@@ -1,92 +1,209 @@
 import { memo } from 'react';
-import { CheckCircle2, Play, Zap, ChevronRight, BookOpen, Clock, Database, Code2, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { CheckCircle2, Play, Zap, ChevronRight, BookOpen, Clock, Database, Code2, Sparkles, ArrowRight } from 'lucide-react';
 import { statsData } from '../lib/constants';
 
-// Premium Hero Section
+// Apple-style spring animation config
+const spring = {
+    type: "spring",
+    stiffness: 300,
+    damping: 30
+};
+
+// Stagger children animation
+const container = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.3
+        }
+    }
+};
+
+const item = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: spring
+    }
+};
+
+// Premium Hero Section with Apple-style animations
 const Hero = memo(function Hero() {
     return (
-        <section id="home" className="relative pt-32 pb-20 px-6 overflow-hidden">
-            {/* Animated Background */}
-            <div className="absolute inset-0 -z-10">
-                <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-500/20 dark:bg-blue-600/10 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '4s' }} />
-                <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-indigo-500/20 dark:bg-indigo-600/10 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '6s' }} />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-violet-500/5 to-transparent rounded-full" />
+        <section id="home" className="relative min-h-[90vh] flex items-center justify-center pt-20 pb-20 px-6 overflow-hidden">
+            {/* Animated Background Orbs */}
+            <div className="absolute inset-0 -z-10 overflow-hidden">
+                <motion.div
+                    className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full"
+                    style={{
+                        background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)',
+                    }}
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        x: [0, 50, 0],
+                        y: [0, 30, 0],
+                    }}
+                    transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
+                <motion.div
+                    className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] rounded-full"
+                    style={{
+                        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%)',
+                    }}
+                    animate={{
+                        scale: [1.2, 1, 1.2],
+                        x: [0, -30, 0],
+                        y: [0, -50, 0],
+                    }}
+                    transition={{
+                        duration: 10,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
             </div>
 
             {/* Grid Pattern */}
-            <div className="absolute inset-0 -z-10 opacity-[0.02] dark:opacity-[0.05]" style={{
-                backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
-                backgroundSize: '50px 50px'
-            }} />
+            <div
+                className="absolute inset-0 -z-10 opacity-[0.015] dark:opacity-[0.03]"
+                style={{
+                    backgroundImage: `
+            linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
+          `,
+                    backgroundSize: '60px 60px'
+                }}
+            />
 
-            <div className="max-w-5xl mx-auto text-center">
+            <motion.div
+                className="max-w-5xl mx-auto text-center"
+                variants={container}
+                initial="hidden"
+                animate="show"
+            >
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 border border-blue-200/50 dark:border-blue-800/50 text-sm font-semibold mb-8 animate-fade-up">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                    <span className="text-slate-700 dark:text-slate-300">{statsData.notebooks} Notebooks</span>
-                    <span className="text-slate-400">•</span>
-                    <span className="text-slate-700 dark:text-slate-300">{statsData.projects} Projects</span>
-                    <span className="text-slate-400">•</span>
-                    <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent font-bold">100% Free</span>
-                </div>
+                <motion.div
+                    variants={item}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass text-sm font-medium mb-8"
+                >
+                    <motion.div
+                        animate={{ rotate: [0, 10, -10, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                    >
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                    </motion.div>
+                    <span className="text-slate-600 dark:text-slate-300">{statsData.notebooks} Notebooks</span>
+                    <span className="text-slate-300 dark:text-slate-600">•</span>
+                    <span className="text-slate-600 dark:text-slate-300">{statsData.projects} Projects</span>
+                    <span className="text-slate-300 dark:text-slate-600">•</span>
+                    <span className="font-bold text-gradient-blue">100% Free</span>
+                </motion.div>
 
                 {/* Title */}
-                <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-[1.05] mb-6 animate-fade-up" style={{ animationDelay: '0.1s' }}>
+                <motion.h1
+                    variants={item}
+                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.95] mb-8"
+                >
                     <span className="text-slate-900 dark:text-white">Master</span>
-                    <br className="sm:hidden" />
-                    <span className="text-slate-900 dark:text-white"> Quantitative</span>
                     <br />
-                    <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Finance with Python</span>
-                </h1>
+                    <span className="text-gradient-blue">Quantitative Finance</span>
+                </motion.h1>
 
                 {/* Subtitle */}
-                <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up" style={{ animationDelay: '0.2s' }}>
-                    From zero to ML-powered trading strategies.
-                    <span className="hidden sm:inline"> Learn Python, data analysis, and build real financial applications.</span>
-                </p>
+                <motion.p
+                    variants={item}
+                    className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed font-medium"
+                >
+                    From Python fundamentals to ML-powered trading strategies.
+                    <span className="hidden sm:inline text-slate-400 dark:text-slate-500"> Build real financial applications with hands-on projects.</span>
+                </motion.p>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fade-up" style={{ animationDelay: '0.3s' }}>
-                    <a
+                <motion.div
+                    variants={item}
+                    className="flex flex-col sm:flex-row gap-4 justify-center mb-20"
+                >
+                    <motion.a
                         href="http://mybinder.org/v2/gh/mangeshraut712/alpha-quant-academy/main?urlpath=lab"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group h-14 px-8 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-blue-500/25 active:scale-[0.98] transition-all text-base"
+                        className="group h-14 px-8 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold flex items-center justify-center gap-3 shadow-2xl shadow-slate-900/20 dark:shadow-white/10"
+                        whileHover={{ scale: 1.02, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={spring}
                     >
-                        <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                        Start Learning Free
-                    </a>
-                    <button
+                        <Play className="w-5 h-5" />
+                        Start Learning
+                        <ArrowRight className="w-4 h-4 opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                    </motion.a>
+
+                    <motion.button
                         onClick={() => document.getElementById('analyst')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="group h-14 px-8 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-violet-300 dark:hover:border-violet-700 transition-all font-semibold flex items-center justify-center gap-2 text-base hover:shadow-lg"
+                        className="group h-14 px-8 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm font-semibold flex items-center justify-center gap-3"
+                        whileHover={{ scale: 1.02, y: -2, borderColor: 'rgb(139, 92, 246)' }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={spring}
                     >
-                        <Sparkles className="w-5 h-5 text-violet-500 group-hover:rotate-12 transition-transform" />
+                        <Sparkles className="w-5 h-5 text-violet-500" />
                         Try AI Analyst
                         <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </button>
-                </div>
+                    </motion.button>
+                </motion.div>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto animate-fade-up" style={{ animationDelay: '0.4s' }}>
+                <motion.div
+                    variants={container}
+                    className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+                >
                     {[
-                        { value: statsData.notebooks, label: "Notebooks", Icon: BookOpen, gradient: "from-blue-500 to-cyan-500" },
-                        { value: `${statsData.hours}+`, label: "Hours Content", Icon: Clock, gradient: "from-emerald-500 to-teal-500" },
-                        { value: statsData.datasets, label: "Datasets", Icon: Database, gradient: "from-violet-500 to-purple-500" },
-                        { value: `${statsData.linesOfCode}+`, label: "Lines of Code", Icon: Code2, gradient: "from-orange-500 to-amber-500" },
+                        { value: statsData.notebooks, label: "Notebooks", Icon: BookOpen, color: "from-blue-500 to-cyan-400" },
+                        { value: `${statsData.hours}+`, label: "Hours", Icon: Clock, color: "from-emerald-500 to-teal-400" },
+                        { value: statsData.datasets, label: "Datasets", Icon: Database, color: "from-violet-500 to-purple-400" },
+                        { value: `${statsData.linesOfCode}+`, label: "LOC", Icon: Code2, color: "from-orange-500 to-amber-400" },
                     ].map((stat, i) => (
-                        <div
+                        <motion.div
                             key={i}
-                            className="group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 cursor-default"
+                            variants={item}
+                            className="card-interactive p-6 text-center"
+                            whileHover={{ y: -8, scale: 1.02 }}
+                            transition={spring}
                         >
-                            <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                                <stat.Icon className="w-5 h-5 text-white" />
-                            </div>
+                            <motion.div
+                                className={`w-12 h-12 mx-auto rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-4 shadow-lg`}
+                                whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <stat.Icon className="w-6 h-6 text-white" />
+                            </motion.div>
                             <div className="text-3xl font-black text-slate-900 dark:text-white mb-1">{stat.value}</div>
                             <div className="text-sm text-slate-500 dark:text-slate-400 font-medium">{stat.label}</div>
-                        </div>
+                        </motion.div>
                     ))}
+                </motion.div>
+            </motion.div>
+
+            {/* Scroll Indicator */}
+            <motion.div
+                className="absolute bottom-8 left-1/2 -translate-x-1/2"
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+                <div className="w-6 h-10 rounded-full border-2 border-slate-300 dark:border-slate-600 flex justify-center pt-2">
+                    <motion.div
+                        className="w-1.5 h-1.5 rounded-full bg-slate-400 dark:bg-slate-500"
+                        animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    />
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 });

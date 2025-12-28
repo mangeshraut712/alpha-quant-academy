@@ -37,12 +37,22 @@ const Navigation = memo(function Navigation({ activeSection, setActiveSection, o
                 <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
                     {/* Logo */}
                     <a href="#home" onClick={() => handleNavClick('home')} className="flex items-center gap-3 group">
-                        <div className="relative">
+                        <div className="relative w-10 h-10">
                             <img
                                 src="/assets/logo.png"
                                 alt="Alpha Quant Academy"
-                                className="w-10 h-10 rounded-xl shadow-lg group-hover:scale-105 transition-transform"
+                                className="w-10 h-10 rounded-xl shadow-lg group-hover:scale-105 transition-transform object-cover"
+                                loading="eager"
+                                onError={(e) => {
+                                    e.target.style.display = 'none';
+                                    e.target.nextSibling.style.display = 'flex';
+                                }}
                             />
+                            <div
+                                className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 items-center justify-center text-white font-bold text-lg hidden"
+                            >
+                                α
+                            </div>
                             <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white dark:border-slate-900" />
                         </div>
                         <div className="hidden sm:block">

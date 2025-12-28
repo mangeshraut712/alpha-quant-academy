@@ -39,7 +39,7 @@ const Navigation = memo(function Navigation({ activeSection, setActiveSection, o
                     <a href="#home" onClick={() => handleNavClick('home')} className="flex items-center gap-3 group">
                         <div className="relative">
                             <img
-                                src="/assets/logo.svg"
+                                src="/assets/logo.png"
                                 alt="Alpha Quant Academy"
                                 className="w-10 h-10 rounded-xl shadow-lg group-hover:scale-105 transition-transform"
                             />

@@ -5,20 +5,20 @@ import {
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
-// World's Top 10 Assets by Market Cap (Dec 2024)
+// World's Top 10 Companies by Market Cap (December 2024/2025)
 const MarketTicker = memo(function MarketTicker() {
     const [marketData, setMarketData] = useState([
-        // Top 10 Global Assets by Market Cap
-        { symbol: 'AAPL', name: 'Apple Inc.', price: 193.42, change: 2.15, changePercent: 1.12, marketCap: '$3.0T' },
-        { symbol: 'MSFT', name: 'Microsoft', price: 376.04, change: 4.21, changePercent: 1.13, marketCap: '$2.8T' },
-        { symbol: 'GOOGL', name: 'Alphabet', price: 141.15, change: 1.87, changePercent: 1.34, marketCap: '$1.8T' },
-        { symbol: 'AMZN', name: 'Amazon', price: 178.25, change: -1.45, changePercent: -0.81, marketCap: '$1.9T' },
-        { symbol: 'NVDA', name: 'NVIDIA', price: 495.22, change: 12.45, changePercent: 2.58, marketCap: '$1.2T' },
-        { symbol: 'META', name: 'Meta', price: 353.96, change: 5.67, changePercent: 1.63, marketCap: '$910B' },
-        { symbol: 'TSLA', name: 'Tesla', price: 248.48, change: -3.21, changePercent: -1.28, marketCap: '$790B' },
-        { symbol: 'BRK.B', name: 'Berkshire', price: 363.15, change: 1.23, changePercent: 0.34, marketCap: '$785B' },
-        { symbol: 'TSM', name: 'TSMC', price: 103.52, change: 2.15, changePercent: 2.12, marketCap: '$535B' },
-        { symbol: 'V', name: 'Visa', price: 261.45, change: 0.87, changePercent: 0.33, marketCap: '$530B' },
+        // Top 10 Global Companies by Market Cap (Current as of Dec 2024)
+        { symbol: 'NVDA', name: 'NVIDIA Corp', price: 134.25, change: 3.45, changePercent: 2.64, marketCap: '$3.3T' },
+        { symbol: 'AAPL', name: 'Apple Inc.', price: 254.50, change: 1.85, changePercent: 0.73, marketCap: '$3.9T' },
+        { symbol: 'MSFT', name: 'Microsoft', price: 438.15, change: -2.10, changePercent: -0.48, marketCap: '$3.3T' },
+        { symbol: 'GOOGL', name: 'Alphabet', price: 192.45, change: 4.21, changePercent: 2.24, marketCap: '$2.4T' },
+        { symbol: 'AMZN', name: 'Amazon', price: 224.80, change: 2.35, changePercent: 1.06, marketCap: '$2.4T' },
+        { symbol: 'META', name: 'Meta Platforms', price: 612.50, change: 8.75, changePercent: 1.45, marketCap: '$1.6T' },
+        { symbol: 'TSLA', name: 'Tesla Inc.', price: 462.25, change: -5.80, changePercent: -1.24, marketCap: '$1.5T' },
+        { symbol: 'AVGO', name: 'Broadcom', price: 235.60, change: 4.15, changePercent: 1.79, marketCap: '$1.1T' },
+        { symbol: 'TSM', name: 'TSMC', price: 203.40, change: 3.20, changePercent: 1.60, marketCap: '$1.0T' },
+        { symbol: 'BRK.B', name: 'Berkshire Hath.', price: 468.75, change: 1.50, changePercent: 0.32, marketCap: '$1.0T' },
     ]);
 
     const [isLive, setIsLive] = useState(true);
@@ -29,9 +29,10 @@ const MarketTicker = memo(function MarketTicker() {
 
         const interval = setInterval(() => {
             setMarketData(prev => prev.map(stock => {
-                const randomChange = (Math.random() - 0.5) * stock.price * 0.002;
+                const volatility = stock.symbol === 'NVDA' || stock.symbol === 'TSLA' ? 0.005 : 0.002;
+                const randomChange = (Math.random() - 0.5) * stock.price * volatility;
                 const newPrice = stock.price + randomChange;
-                const newChange = stock.change + randomChange * 0.5;
+                const newChange = stock.change + randomChange * 0.3;
                 const newPercent = (newChange / (newPrice - newChange)) * 100;
 
                 return {
@@ -41,7 +42,7 @@ const MarketTicker = memo(function MarketTicker() {
                     changePercent: Math.round(newPercent * 100) / 100,
                 };
             }));
-        }, 3000);
+        }, 2500);
 
         return () => clearInterval(interval);
     }, [isLive]);
@@ -54,8 +55,8 @@ const MarketTicker = memo(function MarketTicker() {
                     <div className="flex items-center gap-3">
                         <Activity className="w-5 h-5 text-emerald-400" />
                         <div>
-                            <span className="font-bold text-base">Global Top 10 Assets</span>
-                            <span className="text-xs text-slate-500 ml-2">by Market Cap</span>
+                            <span className="font-bold text-base">Global Top 10</span>
+                            <span className="text-xs text-slate-500 ml-2">by Market Cap • Dec 2024</span>
                         </div>
                         <span className={cn(
                             "flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full font-bold ml-2",
@@ -110,9 +111,9 @@ const MarketTicker = memo(function MarketTicker() {
                 {/* Footer Note */}
                 <div className="flex items-center justify-center gap-2 mt-6 text-xs text-slate-500">
                     <span>📊</span>
-                    <span>Simulated data for educational purposes</span>
+                    <span>Simulated prices for educational purposes</span>
                     <span>•</span>
-                    <span>Learn real API integration in Track 4: Financial Analysis</span>
+                    <span>Learn real API integration in Track 4</span>
                 </div>
             </div>
         </section>

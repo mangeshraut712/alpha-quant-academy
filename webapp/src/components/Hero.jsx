@@ -20,10 +20,10 @@ const Hero = () => (
                     {statsData.notebooks} Notebooks • {statsData.projects} Projects • 100% Free
                 </div>
 
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight mb-6">
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight mb-6 text-slate-900 dark:text-white">
                     Python Finance
                     <br />
-                    <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Academy</span>
+                    <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent inline-block">Academy</span>
                 </h1>
 
                 <p className="text-lg md:text-xl text-foreground/70 dark:text-white/70 max-w-2xl mx-auto mb-12">

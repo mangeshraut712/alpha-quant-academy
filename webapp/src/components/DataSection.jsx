@@ -40,9 +40,9 @@ const DataSection = () => {
                             </div>
                             <div>
                                 <div className="font-mono text-sm font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">{dataset.name}</div>
-                                <div className="text-xs text-foreground/70 dark:text-white/70 mt-2 font-medium">{dataset.description}</div>
-                                <div className="text-[10px] text-foreground/80 dark:text-white/80 mt-4 font-bold flex items-center gap-1.5 uppercase tracking-widest">
-                                    <Users className="w-3 h-3 text-primary" /> {dataset.rows} Rows
+                                <div className="text-xs text-slate-600 dark:text-slate-400 mt-2 font-medium">{dataset.description}</div>
+                                <div className="text-[10px] text-slate-700 dark:text-slate-300 mt-4 font-bold flex items-center gap-1.5 uppercase tracking-widest">
+                                    <Users className="w-3 h-3 text-blue-600 dark:text-blue-400" /> {dataset.rows} Rows
                                 </div>
                             </div>
                         </div>

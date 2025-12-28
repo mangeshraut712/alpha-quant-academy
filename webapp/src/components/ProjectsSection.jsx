@@ -8,7 +8,7 @@ const ProjectsSection = () => {
     const [activeProject, setActiveProject] = useState(null);
 
     return (
-        <section id="projects" className="px-6 py-24 bg-[#f8fafc] dark:bg-[#0f172a]/50 border-y border-border">
+        <section id="projects" className="px-6 py-24 bg-slate-50 dark:bg-slate-900/50 border-y border-border">
             <div className="max-w-6xl mx-auto">
                 <div className="mb-12">
                     <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Hands-On Practice</span>
@@ -65,8 +65,8 @@ const ProjectsSection = () => {
                                     ))}
                                 </div>
 
-                                <div className="text-[10px] font-mono text-foreground/70 dark:text-white/70 flex items-center gap-1.5 mt-auto pt-4 border-t border-border font-medium">
-                                    <FileText className="w-3 h-3 text-primary/60" /> {project.file}
+                                <div className="text-[10px] font-mono text-slate-600 dark:text-slate-400 flex items-center gap-1.5 mt-auto pt-4 border-t border-border font-medium">
+                                    <FileText className="w-3 h-3 text-blue-600 dark:text-blue-400" /> {project.file}
                                 </div>
                             </div>
 

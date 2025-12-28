@@ -90,13 +90,13 @@ const CurriculumSection = ({ tracks, onToggle }) => {
                                                 <div className="flex-1">
                                                     <div className="font-medium">{module.name}</div>
                                                     {module.file && (
-                                                        <div className="text-[10px] text-foreground/60 dark:text-white/60 font-mono flex items-center gap-1.5 mt-0.5">
-                                                            <FileText className="w-3 h-3 text-primary/50" /> {module.file}
+                                                        <div className="text-[10px] text-slate-600 dark:text-slate-400 font-mono flex items-center gap-1.5 mt-0.5">
+                                                            <FileText className="w-3 h-3 text-blue-600 dark:text-blue-400" /> {module.file}
                                                         </div>
                                                     )}
                                                 </div>
-                                                <div className="text-[10px] text-foreground/80 dark:text-white/80 flex items-center gap-1 font-bold">
-                                                    <Clock className="w-3 h-3 text-primary" /> {module.duration}
+                                                <div className="text-[10px] text-slate-700 dark:text-slate-300 flex items-center gap-1 font-bold">
+                                                    <Clock className="w-3 h-3 text-blue-600 dark:text-blue-400" /> {module.duration}
                                                 </div>
                                             </button>
                                         ))}

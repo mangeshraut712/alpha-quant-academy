@@ -13,7 +13,7 @@ const Footer = () => (
                         </div>
                         <span className="font-bold">Python Finance Academy</span>
                     </div>
-                    <p className="text-sm text-foreground/60 dark:text-white/60">
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                         Open-source Python training for finance professionals.
                     </p>
                 </div>

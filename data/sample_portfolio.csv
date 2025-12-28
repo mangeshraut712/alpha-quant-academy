@@ -1,0 +1,8 @@
+Ticker,Shares,AvgCost,Sector,PurchaseDate
+AAPL,50,150.0,Technology,2022-01-15
+GOOGL,20,125.0,Technology,2022-02-20
+MSFT,30,350.0,Technology,2021-11-05
+AMZN,25,165.0,Consumer,2022-03-10
+TSLA,15,220.0,Automotive,2021-12-01
+NVDA,40,280.0,Technology,2022-04-15
+META,18,310.0,Technology,2022-05-20

@@ -31,6 +31,8 @@ jobs:
       
       - name: Build
         run: npm run build
+        env:
+          VITE_BASE_PATH: /alpha-quant-academy/
       
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4

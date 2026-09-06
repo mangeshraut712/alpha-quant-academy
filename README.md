@@ -9,6 +9,7 @@
 </p>
 
 <p align="center">
+  <a href="https://mangeshraut712.github.io/alpha-quant-academy/"><strong>Live site</strong></a> •
   <a href="#-intelligent-ai-analyst">AI Analyst</a> •
   <a href="#-curriculum">Curriculum</a> •
   <a href="#-market-sim">Simulation</a> •
@@ -194,13 +195,26 @@ The Python Finance Academy features a modern, premium web interface built with *
 - **Shadcn UI**: Accessible and modern component architecture.
 
 ### Viewing the Site
-1. **Production Build**: Open `webapp/dist/index.html` in your browser.
-2. **Development Mode**:
-   ```bash
-   cd webapp
-   npm install
-   npm run dev
-   ```
+
+**Production (GitHub Pages, free):** [https://mangeshraut712.github.io/alpha-quant-academy/](https://mangeshraut712.github.io/alpha-quant-academy/)
+
+The public UI is the Vite + React app in `webapp/`. GitHub Actions builds it the same way Vercel did (`cd webapp && npm install && npm run build`, output `webapp/dist`) and publishes that folder to Pages. Curriculum notebooks stay in this repo; they are not part of the static site.
+
+Local development:
+
+```bash
+cd webapp
+npm install
+npm run dev
+```
+
+Production-like preview (project-page base path):
+
+```bash
+cd webapp
+VITE_BASE_PATH=/alpha-quant-academy/ npm run build
+VITE_BASE_PATH=/alpha-quant-academy/ npm run preview
+```
 
 ### Design Philosophy
 - **Zen Simplicity**: Removing noise to focus on learning.
@@ -227,7 +241,7 @@ We use real-world data including:
 | **Finance** | yfinance, QuantLib, Zipline, Backtrader |
 | **Web** | Streamlit, FastAPI, Flask |
 | **Database** | SQLAlchemy, PostgreSQL, Redis |
-| **Cloud** | Docker, AWS, GitHub Actions |
+| **Cloud** | Docker, GitHub Actions, GitHub Pages |
 
 ---
 
@@ -322,9 +336,9 @@ This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENS
 
 ```mermaid
 flowchart LR
-    A["Browser"] --> B["Frontend App"]
-    B --> C["API / Serverless"]
-    C --> D["Deploy"]
+    A["Browser"] --> B["Vite React UI"]
+    B --> C["GitHub Pages"]
+    C --> D["github.io/alpha-quant-academy"]
 ```
 
 _High-level flow of the deployed web experience and supporting services._

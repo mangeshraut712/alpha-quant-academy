@@ -2,6 +2,11 @@
 
 All notable changes to Python Finance Academy are documented in this file.
 
+## [Unreleased]
+
+### Changed
+- Public web UI hosting moved from paused Vercel to free GitHub Pages (`https://mangeshraut712.github.io/alpha-quant-academy/`). Build output is still `webapp/dist` (same as `vercel.json`).
+
 ## [2.0.0] - 2024-12-28
 
 ### 🎉 Major Release - Complete Curriculum Overhaul

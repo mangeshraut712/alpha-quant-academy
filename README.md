@@ -18,6 +18,18 @@
 </p>
 
 <p align="center">
+  <a href="https://mangeshraut712.github.io/alpha-quant-academy/">
+    <img src="docs/screenshots/01-home.png" alt="Alpha Quant Academy home — hero, stats, and launch actions" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://mangeshraut712.github.io/alpha-quant-academy/#curriculum">
+    <img src="docs/screenshots/02-feature.png" alt="Curriculum progress — learning tracks and modules" width="900">
+  </a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/AI--Engine-v2.0-violet?style=for-the-badge&logo=openai" alt="AI Engine">
   <img src="https://img.shields.io/badge/Backtest-Monte%20Carlo-emerald?style=for-the-badge" alt="Backtesting">
   <img src="https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue?style=for-the-badge&logo=react" alt="Frontend">
@@ -34,11 +46,11 @@
 
 ## 🎯 Overview
 
-**Python Finance Academy** is a free, comprehensive learning platform designed to take you from Python beginner to finance professional. Whether you're a business analyst, trader, data scientist, or developer, this curriculum provides hands-on, practical training with real-world financial applications.
+**Alpha Quant Academy** is a free, comprehensive learning platform designed to take you from Python beginner to finance professional. Whether you're a business analyst, trader, data scientist, or developer, this curriculum provides hands-on, practical training with real-world financial applications.
 
 ### What Makes This Different?
 
-| Feature | Traditional Courses | Python Finance Academy |
+| Feature | Traditional Courses | Alpha Quant Academy |
 |---------|---------------------|------------------------|
 | **Real-World Data** | Toy datasets | Live market data, real financial datasets |
 | **Interactive Learning** | Static notebooks | Exercises with solutions, quizzes, projects |
@@ -59,8 +71,8 @@ Click the button above to launch a fully configured JupyterLab environment in yo
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/python-finance-academy.git
-cd python-finance-academy
+git clone https://github.com/mangeshraut712/alpha-quant-academy.git
+cd alpha-quant-academy
 
 # Create virtual environment
 python -m venv venv
@@ -185,7 +197,7 @@ Every module includes Jupyter notebooks with:
 
 ### 🌐 Web Application
 
-The Python Finance Academy features a modern, premium web interface built with **React**, **Tailwind CSS**, and **Framer Motion**, following **Apple** and **Japanese** design philosophies.
+The Alpha Quant Academy features a modern, premium web interface built with **React**, **Tailwind CSS**, and **Framer Motion**, following **Apple** and **Japanese** design philosophies.
 
 ### Features
 - **Minimalist Aesthetic**: Focus on "Ma" (negative space) and clarity.

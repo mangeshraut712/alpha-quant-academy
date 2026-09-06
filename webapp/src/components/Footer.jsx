@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { Github, ExternalLink, Heart, Mail, Twitter } from 'lucide-react';
+import { publicUrl } from '../lib/utils';
 
 const Footer = memo(function Footer() {
     const currentYear = new Date().getFullYear();
@@ -25,7 +26,7 @@ const Footer = memo(function Footer() {
                     <div className="col-span-2">
                         <div className="flex items-center gap-3 mb-4">
                             <img
-                                src="/assets/logo.png"
+                                src={publicUrl('assets/logo.png')}
                                 alt="Alpha Quant Academy"
                                 className="h-10 w-auto"
                                 onError={(e) => e.target.style.display = 'none'}

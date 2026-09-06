@@ -1,7 +1,7 @@
 import { useState, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github, RotateCcw } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { cn, publicUrl } from '../lib/utils';
 
 // Apple-style spring
 const spring = {
@@ -58,7 +58,7 @@ const Navigation = memo(function Navigation({ activeSection, setActiveSection, o
                         transition={spring}
                     >
                         <img
-                            src="/assets/logo.png"
+                            src={publicUrl('assets/logo.png')}
                             alt="Alpha Quant Academy"
                             className="h-10 w-auto max-w-[180px] object-contain"
                             loading="eager"

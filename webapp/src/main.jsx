@@ -35,7 +35,8 @@ function LoadingFallback() {
 // Register Service Worker for PWA
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js', { scope: '/' })
+    const base = import.meta.env.BASE_URL || '/'
+    navigator.serviceWorker.register(`${base}sw.js`, { scope: base })
       .then((registration) => {
         console.log('SW registered:', registration.scope)
       })

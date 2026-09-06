@@ -2,8 +2,13 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
+// GitHub Pages project site: https://mangeshraut712.github.io/alpha-quant-academy/
+// Local `npm run dev` keeps base `/` unless VITE_BASE_PATH is set.
+const base = process.env.VITE_BASE_PATH || '/'
+
 // https://vite.dev/config/
 export default defineConfig({
+  base,
   plugins: [
     react({
       // Faster refresh for Safari
@@ -11,7 +16,7 @@ export default defineConfig({
     }),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
+      includeAssets: ['assets/logo.svg', 'assets/logo.png'],
       manifest: {
         name: 'Alpha Quant Academy',
         short_name: 'AQA',
@@ -19,14 +24,16 @@ export default defineConfig({
         theme_color: '#2563eb',
         background_color: '#ffffff',
         display: 'standalone',
+        start_url: './',
+        scope: './',
         icons: [
           {
-            src: '/icons/icon-192x192.png',
+            src: 'assets/logo.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/icons/icon-512x512.png',
+            src: 'assets/logo.png',
             sizes: '512x512',
             type: 'image/png'
           }

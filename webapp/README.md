@@ -4,6 +4,8 @@
 
 A cutting-edge educational platform for mastering Python in quantitative finance, built with the latest 2025 web technologies.
 
+**Live site:** [https://mangeshraut712.github.io/alpha-quant-academy/](https://mangeshraut712.github.io/alpha-quant-academy/) (GitHub Pages; formerly Vercel).
+
 ## 🚀 Tech Stack (2025 Edition)
 
 | Technology | Version | Purpose |

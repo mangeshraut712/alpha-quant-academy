@@ -1,7 +1,7 @@
 beautifulsoup4
 ipympl
 ipywidgets
-jupyterlab>=3.5,<4
+jupyterlab>=4.5.10,<5
 jupyterlab-templates
 matplotlib
 numpy

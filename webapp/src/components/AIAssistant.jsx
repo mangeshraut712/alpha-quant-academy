@@ -113,11 +113,7 @@ const AIAssistant = memo(function AIAssistant() {
                                         ? "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-tl-sm"
                                         : "bg-blue-600 text-white rounded-tr-sm"
                                 )}>
-                                    <div className="whitespace-pre-wrap" dangerouslySetInnerHTML={{
-                                        __html: msg.content
-                                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                                            .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre class="bg-slate-900 text-slate-100 p-2 rounded mt-2 text-xs overflow-x-auto"><code>$2</code></pre>')
-                                    }} />
+                                    <div className="whitespace-pre-wrap">{msg.content}</div>
                                 </div>
                             </div>
                         ))}

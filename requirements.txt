@@ -14,7 +14,7 @@ mplfinance>=0.12.10b0
 altair>=5.0.0
 
 # Jupyter Environment
-jupyterlab>=4.0.0
+jupyterlab>=4.5.10
 notebook>=7.0.0
 ipywidgets>=8.0.0
 nbformat>=5.0.0

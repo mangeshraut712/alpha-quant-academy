@@ -117,6 +117,7 @@ outputs/
 !webapp/public/assets/logo.png
 !assets/images/*.png
 !docs/screenshots/*.png
+!docs/screenshots/*.webp
 *.jpg
 *.jpeg
 .DS_Store

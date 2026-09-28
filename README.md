@@ -18,18 +18,6 @@
 </p>
 
 <p align="center">
-  <a href="https://mangeshraut712.github.io/alpha-quant-academy/">
-    <img src="docs/screenshots/01-home.png" alt="Alpha Quant Academy home — hero, stats, and launch actions" width="900">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://mangeshraut712.github.io/alpha-quant-academy/#curriculum">
-    <img src="docs/screenshots/02-feature.png" alt="Curriculum progress — learning tracks and modules" width="900">
-  </a>
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/AI--Engine-v2.0-violet?style=for-the-badge&logo=openai" alt="AI Engine">
   <img src="https://img.shields.io/badge/Backtest-Monte%20Carlo-emerald?style=for-the-badge" alt="Backtesting">
   <img src="https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue?style=for-the-badge&logo=react" alt="Frontend">
@@ -41,6 +29,24 @@
     <img src="https://img.shields.io/badge/Launch-JupyterLab-F37626?style=for-the-badge&logo=jupyter" alt="Launch Binder">
   </a>
 </p>
+
+---
+
+## Screenshots
+
+Framed captures of the live app (current UI).
+
+<div align="center">
+
+<img src="docs/screenshots/01-home.webp" alt="Learn quant from zero — Alpha Quant Academy home" width="720" />
+
+<img src="docs/screenshots/02-curriculum.webp" alt="Follow a clear path — curriculum progress tracks" width="720" />
+
+<img src="docs/screenshots/03-projects.webp" alt="Build real finance apps — projects and datasets" width="720" />
+
+<img src="docs/screenshots/04-analyst.webp" alt="Train before you trade — AI Analyst workspace" width="720" />
+
+</div>
 
 ---
 

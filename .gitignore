@@ -124,3 +124,6 @@ outputs/
 .vscode/
 .idea/
 *.log
+# Local agent tooling
+.agents/
+skills-lock.json

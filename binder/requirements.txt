@@ -12,3 +12,5 @@ pyarrow
 requests
 scipy
 seaborn
+# emSign CA advisory: require patched CA bundle
+certifi>=2026.10.19

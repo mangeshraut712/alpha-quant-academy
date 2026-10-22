@@ -62,7 +62,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          python -m pip install --upgrade 'pip>=26.2.2'
           pip install pytest ruff mypy nbformat
       
       - name: Syntax Check
@@ -86,7 +86,9 @@ jobs:
           python-version: '3.11'
       
       - name: Install nbformat
-        run: pip install nbformat
+        run: |
+          python -m pip install --upgrade 'pip>=26.2.2'
+          pip install nbformat
       
       - name: Validate Notebooks
         run: |

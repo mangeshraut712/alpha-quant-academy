@@ -9,6 +9,8 @@ Enhanced version inspired by nof1.ai Alpha Arena concepts:
 - Performance analytics with Sharpe ratio
 """
 
+from __future__ import annotations
+
 import random
 from collections import deque
 from dataclasses import dataclass, field
@@ -834,7 +836,7 @@ class MarketBacktester:
     Backtesting engine to simulate strategy performance over time.
     Provides realistic win/loss probabilities based on consensus confidence.
     """
-    def __init__(self, analyst: 'EnhancedAIAnalyst'):
+    def __init__(self, analyst: EnhancedAIAnalyst):
         self.analyst = analyst
         self.history = []
 

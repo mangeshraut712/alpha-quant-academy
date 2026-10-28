@@ -15,6 +15,8 @@ Features:
 Usage: python ai_analyst.py --feature [1-7] --stock AAPL
 """
 
+from __future__ import annotations
+
 import warnings
 
 import matplotlib.pyplot as plt

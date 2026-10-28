@@ -17,8 +17,6 @@ Usage: python ai_analyst.py --feature [1-7] --stock AAPL
 
 import yfinance as yf
 import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
@@ -63,12 +61,12 @@ class AIStockAnalyst:
         print(f"Sector: {info.get('sector', 'N/A')}")
         print(f"Industry: {info.get('industry', 'N/A')}")
         print(f"Country: {info.get('country', 'N/A')}")
-        print(f"\nBusiness Summary:")
+        print("\nBusiness Summary:")
         summary = info.get('longBusinessSummary', 'N/A')
         print(summary[:300] + "..." if len(summary) > 300 else summary)
         
         # Financial Ratios
-        print(f"\n\n💰 KEY FINANCIAL RATIOS")
+        print("\n\n💰 KEY FINANCIAL RATIOS")
         print("-" * 70)
         
         metrics = {
@@ -85,7 +83,7 @@ class AIStockAnalyst:
             print(f"{metric:.<40} {value}")
         
         # Profitability
-        print(f"\n\n📈 PROFITABILITY & GROWTH")
+        print("\n\n📈 PROFITABILITY & GROWTH")
         print("-" * 70)
         
         profitability = {
@@ -101,7 +99,7 @@ class AIStockAnalyst:
             print(f"{metric:.<40} {value}")
         
         # Financial Health
-        print(f"\n\n🏦 FINANCIAL HEALTH")
+        print("\n\n🏦 FINANCIAL HEALTH")
         print("-" * 70)
         
         health = {
@@ -117,7 +115,7 @@ class AIStockAnalyst:
             print(f"{metric:.<40} {value}")
         
         # Valuation Assessment
-        print(f"\n\n⚖️ VALUATION ASSESSMENT")
+        print("\n\n⚖️ VALUATION ASSESSMENT")
         print("-" * 70)
         
         pe = info.get('trailingPE', 0)
@@ -129,7 +127,7 @@ class AIStockAnalyst:
             print(f"P/E Assessment: {pe:.2f} vs Industry Avg ~{industry_avg_pe} → {valuation}")
         
         # Management Quality Indicators
-        print(f"\n\n👔 MANAGEMENT & GOVERNANCE")
+        print("\n\n👔 MANAGEMENT & GOVERNANCE")
         print("-" * 70)
         
         management = {
@@ -143,14 +141,14 @@ class AIStockAnalyst:
         
         # Dividend Information
         if info.get('dividendYield'):
-            print(f"\n\n💵 DIVIDEND INFORMATION")
+            print("\n\n💵 DIVIDEND INFORMATION")
             print("-" * 70)
             print(f"Dividend Yield: {self._format_percent(info.get('dividendYield'))}")
             print(f"Payout Ratio: {self._format_percent(info.get('payoutRatio'))}")
             print(f"5-Year Avg Yield: {info.get('fiveYearAvgDividendYield', 'N/A')}")
         
         # Competitive Position
-        print(f"\n\n🏆 COMPETITIVE POSITION")
+        print("\n\n🏆 COMPETITIVE POSITION")
         print("-" * 70)
         
         beta = info.get('beta', 1)
@@ -161,12 +159,12 @@ class AIStockAnalyst:
         print(f"Avg Volume (3M): {self._format_large_number(info.get('averageVolume'))}")
         
         # Final Recommendation
-        print(f"\n\n🎯 ANALYST SUMMARY")
+        print("\n\n🎯 ANALYST SUMMARY")
         print("-" * 70)
-        print(f"This is a fundamental analysis only. Consider:")
-        print(f"  ✓ Strong Points: Check profitability, growth, and cash flow")
-        print(f"  ✓ Risk Factors: Review debt levels, valuation multiples")
-        print(f"  ✓ Follow-up: Analyze quarterly trends and industry comparisons")
+        print("This is a fundamental analysis only. Consider:")
+        print("  ✓ Strong Points: Check profitability, growth, and cash flow")
+        print("  ✓ Risk Factors: Review debt levels, valuation multiples")
+        print("  ✓ Follow-up: Analyze quarterly trends and industry comparisons")
         print(f"\n{'='*70}\n")
     
     # ============================================================
@@ -231,7 +229,7 @@ class AIStockAnalyst:
             print(f"SMA 200: ${latest['SMA_200']:.2f} → {'Above' if current_price > latest['SMA_200'] else 'Below'}")
         
         # Trend Analysis
-        print(f"\n\n📊 TREND ANALYSIS")
+        print("\n\n📊 TREND ANALYSIS")
         print("-" * 70)
         
         if current_price > latest['SMA_20'] > latest['SMA_50']:
@@ -247,7 +245,7 @@ class AIStockAnalyst:
         print(f"Overall Trend: {emoji} {trend}")
         
         # RSI Analysis
-        print(f"\n\n⚡ RSI (Relative Strength Index)")
+        print("\n\n⚡ RSI (Relative Strength Index)")
         print("-" * 70)
         rsi = latest['RSI']
         print(f"RSI: {rsi:.2f}")
@@ -261,7 +259,7 @@ class AIStockAnalyst:
         print(f"Signal: {rsi_signal}")
         
         # MACD Analysis
-        print(f"\n\n🌊 MACD Analysis")
+        print("\n\n🌊 MACD Analysis")
         print("-" * 70)
         macd = latest['MACD']
         signal = latest['Signal']
@@ -276,7 +274,7 @@ class AIStockAnalyst:
         print(f"Interpretation: {macd_signal}")
         
         # Bollinger Bands
-        print(f"\n\n📏 BOLLINGER BANDS")
+        print("\n\n📏 BOLLINGER BANDS")
         print("-" * 70)
         print(f"Upper Band: ${latest['BB_Upper']:.2f}")
         print(f"Middle Band: ${latest['BB_Mid']:.2f}")
@@ -294,7 +292,7 @@ class AIStockAnalyst:
         print(f"Signal: {bb_signal}")
         
         # Support & Resistance
-        print(f"\n\n🎯 SUPPORT & RESISTANCE LEVELS")
+        print("\n\n🎯 SUPPORT & RESISTANCE LEVELS")
         print("-" * 70)
         recent_high = df['High'].tail(60).max()
         recent_low = df['Low'].tail(60).min()
@@ -310,7 +308,7 @@ class AIStockAnalyst:
         print(f"Distance to Support: {distance_to_support:.1f}% down")
         
         # Volume Analysis
-        print(f"\n\n📊 VOLUME ANALYSIS")
+        print("\n\n📊 VOLUME ANALYSIS")
         print("-" * 70)
         avg_volume = df['Volume'].tail(20).mean()
         current_volume = latest['Volume']
@@ -328,7 +326,7 @@ class AIStockAnalyst:
         print(f"Signal: {vol_signal}")
         
         # Scenarios
-        print(f"\n\n🔮 LIKELY SCENARIOS (Not predictions)")
+        print("\n\n🔮 LIKELY SCENARIOS (Not predictions)")
         print("-" * 70)
         print("Based on current technical setup:")
         
@@ -401,7 +399,7 @@ class AIStockAnalyst:
         risk_level: 'conservative', 'moderate', 'aggressive'
         """
         print(f"\n{'='*70}")
-        print(f"🎯 TRADING STRATEGY SIMULATOR")
+        print("🎯 TRADING STRATEGY SIMULATOR")
         print(f"{'='*70}\n")
         
         print(f"Strategy Type: {strategy_type.upper()}")
@@ -434,14 +432,14 @@ class AIStockAnalyst:
         
         params = risk_params.get(risk_level, risk_params['moderate'])
         
-        print(f"📋 STRATEGY PARAMETERS")
+        print("📋 STRATEGY PARAMETERS")
         print("-" * 70)
         print(f"Stop Loss: {params['stop_loss']*100:.0f}%")
         print(f"Take Profit: {params['take_profit']*100:.0f}%")
         print(f"Position Size: {params['position_size']*100:.0f}% of capital")
         
         # Simulate behavior in different conditions
-        print(f"\n\n🌐 MARKET CONDITION SIMULATIONS")
+        print("\n\n🌐 MARKET CONDITION SIMULATIONS")
         print("-" * 70)
         
         scenarios = [
@@ -455,7 +453,7 @@ class AIStockAnalyst:
             print(f"\n{scenario_name}:")
             sim_func(strategy_type, params)
         
-        print(f"\n\n💡 KEY INSIGHTS")
+        print("\n\n💡 KEY INSIGHTS")
         print("-" * 70)
         
         if strategy_type == 'intraday':
@@ -475,27 +473,27 @@ class AIStockAnalyst:
     
     def _simulate_bull_market(self, strategy, params):
         """Simulate bull market behavior."""
-        print(f"  Win Rate: ~65-75%")
-        print(f"  Expected: Multiple winning trades, let profits run")
-        print(f"  Action: Trail stops, reduce position sizing on strength")
+        print("  Win Rate: ~65-75%")
+        print("  Expected: Multiple winning trades, let profits run")
+        print("  Action: Trail stops, reduce position sizing on strength")
     
     def _simulate_bear_market(self, strategy, params):
         """Simulate bear market behavior."""
-        print(f"  Win Rate: ~35-45%")
-        print(f"  Expected: More stop-outs, short rallies")
-        print(f"  Action: Tighter stops, smaller positions, wait for reversal")
+        print("  Win Rate: ~35-45%")
+        print("  Expected: More stop-outs, short rallies")
+        print("  Action: Tighter stops, smaller positions, wait for reversal")
     
     def _simulate_sideways_market(self, strategy, params):
         """Simulate sideways market behavior."""
-        print(f"  Win Rate: ~50-55%")
-        print(f"  Expected: Whipsaws, range-bound moves")
-        print(f"  Action: Buy support/sell resistance, avoid breakout trades")
+        print("  Win Rate: ~50-55%")
+        print("  Expected: Whipsaws, range-bound moves")
+        print("  Action: Buy support/sell resistance, avoid breakout trades")
     
     def _simulate_volatile_market(self, strategy, params):
         """Simulate volatile market behavior."""
-        print(f"  Win Rate: ~45-60%")
-        print(f"  Expected: Large swings, faster profit/loss targets")
-        print(f"  Action: Wider stops, smaller positions, quick profits")
+        print("  Win Rate: ~45-60%")
+        print("  Expected: Large swings, faster profit/loss targets")
+        print("  Action: Wider stops, smaller positions, quick profits")
     
     # ============================================================
     # Utility Methods

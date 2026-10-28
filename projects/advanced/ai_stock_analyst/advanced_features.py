@@ -8,9 +8,7 @@ Completing the remaining features:
 - Feature 7: Daily Market Brain
 """
 
-import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta
+from datetime import datetime
 
 
 class RiskManager:
@@ -28,7 +26,7 @@ class RiskManager:
         goals: str - Investment goals
         """
         print(f"\n{'='*70}")
-        print(f"🛡️ PERSONAL RISK MANAGER")
+        print("🛡️ PERSONAL RISK MANAGER")
         print(f"{'='*70}\n")
         
         # Profile Summary
@@ -42,7 +40,7 @@ class RiskManager:
         # Calculate recommended allocations
         allocations = self._calculate_allocations(age, risk_tolerance, investment_horizon)
         
-        print(f"\n\n📊 RECOMMENDED ASSET ALLOCATION")
+        print("\n\n📊 RECOMMENDED ASSET ALLOCATION")
         print("-" * 70)
         
         for asset, percentage in allocations.items():
@@ -50,7 +48,7 @@ class RiskManager:
             print(f"{asset:.<30} {percentage:>3.0f}% {bar}")
         
         # Risk controls
-        print(f"\n\n⚙️ RISK CONTROL MECHANISMS")
+        print("\n\n⚙️ RISK CONTROL MECHANISMS")
         print("-" * 70)
         
         controls = self._get_risk_controls(risk_tolerance)
@@ -58,7 +56,7 @@ class RiskManager:
             print(f"• {control}: {value}")
         
         # Position sizing rules
-        print(f"\n\n💰 POSITION SIZING GUIDELINES")
+        print("\n\n💰 POSITION SIZING GUIDELINES")
         print("-" * 70)
         
         max_position = {"conservative": 5, "moderate": 10, "aggressive": 15}[risk_tolerance]
@@ -67,10 +65,10 @@ class RiskManager:
         print(f"Max Single Position: {max_position}% of portfolio")
         print(f"Max Sector Exposure: {max_sector}% of portfolio")
         print(f"Min # of Holdings: {100 // max_position} stocks")
-        print(f"Cash Reserve: 5-10% for opportunities")
+        print("Cash Reserve: 5-10% for opportunities")
         
         # Rebalancing strategy
-        print(f"\n\n🔄 REBALANCING STRATEGY")
+        print("\n\n🔄 REBALANCING STRATEGY")
         print("-" * 70)
         
         if investment_horizon == 'short':
@@ -85,18 +83,18 @@ class RiskManager:
         
         print(f"Frequency: {rebal_freq}")
         print(f"Trigger Threshold: {threshold} deviation from target")
-        print(f"Method: Sell winners, buy laggards (tax-efficient)")
+        print("Method: Sell winners, buy laggards (tax-efficient)")
         
         # Time-based adjustments
-        print(f"\n\n📅 TIME-BASED ADJUSTMENTS")
+        print("\n\n📅 TIME-BASED ADJUSTMENTS")
         print("-" * 70)
         
         years_to_goal = {"short": 2, "medium": 7, "long": 20}[investment_horizon]
         print(f"Years to Goal: {years_to_goal}")
-        print(f"Adjustment Strategy:")
-        print(f"  • Every 5 years: Reduce equity by 5-10%")
-        print(f"  • Within 5 years of goal: Shift to bonds/cash")
-        print(f"  • Maintain emergency fund: 6-12 months expenses")
+        print("Adjustment Strategy:")
+        print("  • Every 5 years: Reduce equity by 5-10%")
+        print("  • Within 5 years of goal: Shift to bonds/cash")
+        print("  • Maintain emergency fund: 6-12 months expenses")
         
         print(f"\n{'='*70}\n")
     
@@ -206,7 +204,7 @@ class StockScreener:
         print(f"{'OVERALL QUALITY SCORE':.<30} {total_score:>3.0f} {final_grade:>3}")
         
         # Investment recommendation
-        print(f"\n\n🎯 SCREENING RESULT")
+        print("\n\n🎯 SCREENING RESULT")
         print("-" * 70)
         
         if total_score >= 75:
@@ -226,7 +224,7 @@ class StockScreener:
         print(f"Recommended Action: {action}")
         
         # Key strengths and weaknesses
-        print(f"\n\n💪 STRENGTHS & WEAKNESSES")
+        print("\n\n💪 STRENGTHS & WEAKNESSES")
         print("-" * 70)
         
         sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
@@ -370,7 +368,7 @@ class DailyMarketBrain:
     def generate_daily_routine(self):
         """Generate a 10-minute daily market analysis routine."""
         print(f"\n{'='*70}")
-        print(f"🧠 DAILY MARKET BRAIN - 10-Minute Routine")
+        print("🧠 DAILY MARKET BRAIN - 10-Minute Routine")
         print(f"{'='*70}\n")
         
         print("⏰ ROUTINE BREAKDOWN")
@@ -388,7 +386,7 @@ class DailyMarketBrain:
             print(f"\n{task} ({time}):")
             print(f"  → {description}")
         
-        print(f"\n\n📋 TODAY'S CHECKLIST")
+        print("\n\n📋 TODAY'S CHECKLIST")
         print("-" * 70)
         
         now = datetime.now()
@@ -424,7 +422,7 @@ class DailyMarketBrain:
         print(f"Day: {day_of_week}")
         print(f"Focus: {focus}")
         
-        print(f"\n\n📊 KEY METRICS TO TRACK")
+        print("\n\n📊 KEY METRICS TO TRACK")
         print("-" * 70)
         
         metrics = [
@@ -438,7 +436,7 @@ class DailyMarketBrain:
         for metric in metrics:
             print(f"  • {metric}")
         
-        print(f"\n\n💡 PRO TIPS")
+        print("\n\n💡 PRO TIPS")
         print("-" * 70)
         
         tips = [

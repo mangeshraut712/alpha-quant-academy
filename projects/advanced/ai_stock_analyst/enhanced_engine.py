@@ -10,12 +10,10 @@ Enhanced version inspired by nof1.ai Alpha Arena concepts:
 """
 
 import numpy as np
-import pandas as pd
-from datetime import datetime, timedelta
+from datetime import datetime
 from dataclasses import dataclass, field
-from typing import List, Dict, Optional, Callable
+from typing import List, Dict, Optional
 from collections import deque
-import json
 import random
 
 # =============================================================================
@@ -808,7 +806,7 @@ class EnhancedAIAnalyst:
         
         consensus = analysis['consensus']
         c_icon = "🟢" if consensus['direction'] == 'LONG' else "🔴" if consensus['direction'] == 'SHORT' else "⚪"
-        print(f"  🎯 CONSENSUS DECISION")
+        print("  🎯 CONSENSUS DECISION")
         print(f"  {'-'*60}")
         print(f"     {c_icon} Direction: {consensus['direction']}")
         print(f"     📊 Confidence: {consensus['confidence']:.1%}")
@@ -817,7 +815,7 @@ class EnhancedAIAnalyst:
         
         risk = analysis['risk_status']
         r_icon = "🟢" if risk['risk_level'] == 'LOW' else "🟡" if risk['risk_level'] == 'MEDIUM' else "🔴"
-        print(f"  🛡️ RISK STATUS")
+        print("  🛡️ RISK STATUS")
         print(f"  {'-'*60}")
         print(f"     {r_icon} Risk Level: {risk['risk_level']}")
         print(f"     📉 Drawdown: {risk['drawdown_pct']}")
@@ -875,7 +873,7 @@ class MarketBacktester:
             }
             
             # 1. Run Analysis
-            analysis = self.analyst.analyze_stock(ticker, data)
+            self.analyst.analyze_stock(ticker, data)
             
             # 2. Generate Proposal
             proposal = self.analyst.generate_trade_proposal(ticker, data)
@@ -904,15 +902,15 @@ class MarketBacktester:
         self.analyst.risk_manager.cooldown_seconds = original_cooldown
         self.analyst.risk_manager.max_trades_per_day = original_max_trades
 
-        print(f"\n✅ Simulation Complete!")
+        print("\n✅ Simulation Complete!")
         print(self.analyst.get_performance_report())
 
 
 def demo():
     """Run a full demo of the enhanced AI analyst"""
     print(f"\n{'='*70}")
-    print(f"  🚀 ENHANCED AI STOCK ANALYST - DEMO v2.0")
-    print(f"  Powered by Multi-Model AI (Alpha Arena Style)")
+    print("  🚀 ENHANCED AI STOCK ANALYST - DEMO v2.0")
+    print("  Powered by Multi-Model AI (Alpha Arena Style)")
     print(f"{'='*70}\n")
     
     analyst = EnhancedAIAnalyst(initial_capital=100000)

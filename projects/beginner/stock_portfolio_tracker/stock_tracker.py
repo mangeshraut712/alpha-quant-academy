@@ -16,7 +16,7 @@ Run: python stock_tracker.py
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from datetime import datetime, timedelta
+from datetime import datetime
 
 # ============================================================
 # SECTION 1: Portfolio Definition

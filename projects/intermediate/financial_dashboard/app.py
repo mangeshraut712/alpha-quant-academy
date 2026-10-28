@@ -6,12 +6,13 @@ A Streamlit-based interactive financial dashboard
 Run: streamlit run app.py
 """
 
-import streamlit as st
-import pandas as pd
-import numpy as np
-import plotly.graph_objects as go
-import plotly.express as px
 from datetime import datetime
+
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+import streamlit as st
 
 # Page config
 st.set_page_config(
@@ -217,12 +218,12 @@ with col_chart:
         fig.add_trace(go.Scatter(
             x=df.index, y=sma_20,
             mode='lines', name='SMA 20',
-            line=dict(color='orange', width=1)
+            line={"color": 'orange', "width": 1}
         ))
         fig.add_trace(go.Scatter(
             x=df.index, y=sma_50,
             mode='lines', name='SMA 50',
-            line=dict(color='purple', width=1)
+            line={"color": 'purple', "width": 1}
         ))
     
     if show_bb:
@@ -232,12 +233,12 @@ with col_chart:
         fig.add_trace(go.Scatter(
             x=df.index, y=bb_mid + 2*bb_std,
             mode='lines', name='Upper BB',
-            line=dict(color='gray', width=1, dash='dash')
+            line={"color": 'gray', "width": 1, "dash": 'dash'}
         ))
         fig.add_trace(go.Scatter(
             x=df.index, y=bb_mid - 2*bb_std,
             mode='lines', name='Lower BB',
-            line=dict(color='gray', width=1, dash='dash'),
+            line={"color": 'gray', "width": 1, "dash": 'dash'},
             fill='tonexty', fillcolor='rgba(128,128,128,0.1)'
         ))
     
@@ -245,8 +246,8 @@ with col_chart:
         height=400,
         xaxis_rangeslider_visible=False,
         template='plotly_white',
-        legend=dict(orientation='h', yanchor='bottom', y=1.02),
-        margin=dict(l=0, r=0, t=30, b=0)
+        legend={"orientation": 'h', "yanchor": 'bottom', "y": 1.02},
+        margin={"l": 0, "r": 0, "t": 30, "b": 0}
     )
     
     st.plotly_chart(fig, use_container_width=True)
@@ -264,7 +265,7 @@ with col_chart:
         fig_vol.update_layout(
             height=150,
             template='plotly_white',
-            margin=dict(l=0, r=0, t=10, b=0),
+            margin={"l": 0, "r": 0, "t": 10, "b": 0},
             showlegend=False
         )
         st.plotly_chart(fig_vol, use_container_width=True)
@@ -302,7 +303,7 @@ with col_stats:
     fig_hist.update_layout(
         height=200,
         showlegend=False,
-        margin=dict(l=0, r=0, t=10, b=0)
+        margin={"l": 0, "r": 0, "t": 10, "b": 0}
     )
     st.plotly_chart(fig_hist, use_container_width=True)
 
@@ -329,7 +330,7 @@ with col_port1:
         allocation, values='Weight', names='Asset',
         color_discrete_sequence=px.colors.qualitative.Set2
     )
-    fig_pie.update_layout(height=300, margin=dict(l=0, r=0, t=30, b=0))
+    fig_pie.update_layout(height=300, margin={"l": 0, "r": 0, "t": 30, "b": 0})
     st.plotly_chart(fig_pie, use_container_width=True)
 
 with col_port2:
@@ -342,15 +343,15 @@ with col_port2:
     bench_norm = benchmark['Close'] / benchmark['Close'].iloc[0] * 100
     
     fig_comp = go.Figure()
-    fig_comp.add_trace(go.Scatter(x=df.index, y=stock_norm, name=selected_ticker, line=dict(color='#1f77b4')))
-    fig_comp.add_trace(go.Scatter(x=benchmark.index, y=bench_norm, name='S&P 500', line=dict(color='#ff7f0e')))
+    fig_comp.add_trace(go.Scatter(x=df.index, y=stock_norm, name=selected_ticker, line={"color": '#1f77b4'}))
+    fig_comp.add_trace(go.Scatter(x=benchmark.index, y=bench_norm, name='S&P 500', line={"color": '#ff7f0e'}))
     
     fig_comp.update_layout(
         height=300,
         template='plotly_white',
-        legend=dict(orientation='h', yanchor='bottom', y=1.02),
+        legend={"orientation": 'h', "yanchor": 'bottom', "y": 1.02},
         yaxis_title='Normalized (Base=100)',
-        margin=dict(l=0, r=0, t=30, b=0)
+        margin={"l": 0, "r": 0, "t": 30, "b": 0}
     )
     st.plotly_chart(fig_comp, use_container_width=True)
 

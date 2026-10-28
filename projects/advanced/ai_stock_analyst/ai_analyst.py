@@ -15,16 +15,18 @@ Features:
 Usage: python ai_analyst.py --feature [1-7] --stock AAPL
 """
 
-import yfinance as yf
-import pandas as pd
-import matplotlib.pyplot as plt
 import warnings
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import yfinance as yf
+
 warnings.filterwarnings('ignore')
 
 class AIStockAnalyst:
     """AI-powered stock analysis toolkit."""
     
-    def __init__(self, ticker: str = None):
+    def __init__(self, ticker: str | None = None):
         self.ticker = ticker
         self.stock = None
         if ticker:
@@ -346,7 +348,7 @@ class AIStockAnalyst:
     
     def _plot_technical_chart(self, df):
         """Plot technical analysis chart."""
-        fig, axes = plt.subplots(3, 1, figsize=(14, 10), gridspec_kw={'height_ratios': [3, 1, 1]})
+        _, axes = plt.subplots(3, 1, figsize=(14, 10), gridspec_kw={'height_ratios': [3, 1, 1]})
         
         # Price + MAs + Bollinger
         ax1 = axes[0]
@@ -601,8 +603,8 @@ def run_risk_manager():
 
 def run_stock_screener(ticker):
     """Feature 5: AI Stock Screener"""
-    from advanced_features import StockScreener
     import yfinance as yf
+    from advanced_features import StockScreener
     
     stock = yf.Ticker(ticker)
     screener = StockScreener()

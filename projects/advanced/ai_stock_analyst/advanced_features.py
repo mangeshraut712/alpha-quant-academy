@@ -455,4 +455,4 @@ class DailyMarketBrain:
 
 
 # Export classes
-__all__ = ['RiskManager', 'StockScreener', 'DailyMarketBrain']
+__all__ = ['DailyMarketBrain', 'RiskManager', 'StockScreener']

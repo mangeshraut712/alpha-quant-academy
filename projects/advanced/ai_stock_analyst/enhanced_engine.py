@@ -9,12 +9,12 @@ Enhanced version inspired by nof1.ai Alpha Arena concepts:
 - Performance analytics with Sharpe ratio
 """
 
-import numpy as np
-from datetime import datetime
-from dataclasses import dataclass, field
-from typing import List, Dict, Optional
-from collections import deque
 import random
+from collections import deque
+from dataclasses import dataclass, field
+from datetime import datetime
+
+import numpy as np
 
 # =============================================================================
 # DATA CLASSES
@@ -41,7 +41,7 @@ class TradeProposal:
     size_pct: float  # Position size as % of portfolio
     risk_reward: float
     confidence: float
-    signals: List[MarketSignal]
+    signals: list[MarketSignal]
     status: str = 'pending'  # 'pending', 'approved', 'rejected', 'executed'
     created_at: datetime = field(default_factory=datetime.now)
 
@@ -72,7 +72,7 @@ class ModelEngine:
         self.specialty = specialty
         self.accuracy_history = deque(maxlen=100)
     
-    def analyze(self, data: Dict) -> MarketSignal:
+    def analyze(self, data: dict) -> MarketSignal:
         raise NotImplementedError
 
 class TechnicalModel(ModelEngine):
@@ -81,7 +81,7 @@ class TechnicalModel(ModelEngine):
     def __init__(self):
         super().__init__("TechnicalAI", "candlestick_patterns")
     
-    def analyze(self, data: Dict) -> MarketSignal:
+    def analyze(self, data: dict) -> MarketSignal:
         """Analyze technical indicators"""
         price = data.get('price', 100)
         sma_20 = data.get('sma_20', price * 0.98)
@@ -143,7 +143,7 @@ class FundamentalModel(ModelEngine):
     def __init__(self):
         super().__init__("FundamentalAI", "financial_statements")
     
-    def analyze(self, data: Dict) -> MarketSignal:
+    def analyze(self, data: dict) -> MarketSignal:
         """Analyze fundamental metrics"""
         pe_ratio = data.get('pe_ratio', 20)
         roe = data.get('roe', 0.15)
@@ -216,7 +216,7 @@ class SentimentModel(ModelEngine):
     def __init__(self):
         super().__init__("SentimentAI", "news_social_media")
     
-    def analyze(self, data: Dict) -> MarketSignal:
+    def analyze(self, data: dict) -> MarketSignal:
         """Analyze market sentiment"""
         news_sentiment = data.get('news_sentiment', 0)  # -1 to 1
         social_sentiment = data.get('social_sentiment', 0)  # -1 to 1
@@ -338,7 +338,7 @@ class MultiModelEngine:
             'sentiment': deque(maxlen=50)
         }
     
-    def analyze(self, data: Dict) -> Dict:
+    def analyze(self, data: dict) -> dict:
         """
         Run multi-model analysis and return consensus.
         
@@ -398,7 +398,7 @@ class MultiModelEngine:
             'actionable': max_direction != 'NEUTRAL' and overall_confidence > 0.5 and consensus_strength >= 0.66
         }
     
-    def generate_proposal(self, ticker: str, data: Dict, portfolio_value: float = 100000) -> Optional[TradeProposal]:
+    def generate_proposal(self, ticker: str, data: dict, portfolio_value: float = 100000) -> TradeProposal | None:
         """Generate a trade proposal if conditions are met"""
         analysis = self.analyze(data)
         
@@ -447,7 +447,7 @@ class MultiModelEngine:
             signals=signals
         )
     
-    def update_model_weights(self, performance_data: Dict):
+    def update_model_weights(self, performance_data: dict):
         """
         Auto-adjust model weights based on performance (Alpha Arena style).
         Models with better recent performance get higher weights.
@@ -548,7 +548,7 @@ class IntelligentRiskManager:
         self.last_trade_time = datetime.now()
         
         # Update peak
-        if self.current_capital > self.peak_capital:
+        if self.current_capital > self.peak_capital:  # noqa: PLR1730 - preserve the current peak when capital is NaN
             self.peak_capital = self.current_capital
         
         self.trade_history.append({
@@ -562,7 +562,7 @@ class IntelligentRiskManager:
         self.daily_pnl = 0.0
         self.trade_count_today = 0
     
-    def get_risk_status(self) -> Dict:
+    def get_risk_status(self) -> dict:
         """Get current risk status"""
         current_drawdown = (self.peak_capital - self.current_capital) / self.peak_capital
         allowed, reason = self.check_trading_allowed()
@@ -712,7 +712,7 @@ class EnhancedAIAnalyst:
         self.pending_proposals = []
         self.active_trades = []
     
-    def analyze_stock(self, ticker: str, data: Dict) -> Dict:
+    def analyze_stock(self, ticker: str, data: dict) -> dict:
         """Run full multi-model analysis on a stock"""
         analysis = self.multi_model.analyze(data)
         
@@ -724,7 +724,7 @@ class EnhancedAIAnalyst:
         
         return analysis
     
-    def generate_trade_proposal(self, ticker: str, data: Dict) -> Optional[TradeProposal]:
+    def generate_trade_proposal(self, ticker: str, data: dict) -> TradeProposal | None:
         """Generate a trade proposal if conditions are met"""
         # Check if trading is allowed
         allowed, reason = self.risk_manager.check_trading_allowed()
@@ -785,11 +785,11 @@ class EnhancedAIAnalyst:
         """Get formatted performance report"""
         return self.analytics.generate_report()
     
-    def get_risk_status(self) -> Dict:
+    def get_risk_status(self) -> dict:
         """Get current risk status"""
         return self.risk_manager.get_risk_status()
 
-    def print_analysis(self, ticker: str, data: Dict):
+    def print_analysis(self, ticker: str, data: dict):
         """Print a formatted multi-model analysis"""
         analysis = self.analyze_stock(ticker, data)
         

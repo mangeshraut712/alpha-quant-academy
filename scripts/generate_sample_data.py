@@ -4,9 +4,10 @@ Generate Sample Financial Data
 This script creates realistic sample datasets for the curriculum.
 """
 
-import pandas as pd
-import numpy as np
 from datetime import datetime, timedelta
+
+import numpy as np
+import pandas as pd
 
 np.random.seed(42)
 

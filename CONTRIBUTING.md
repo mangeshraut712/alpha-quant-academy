@@ -1,6 +1,6 @@
-# Contributing to Python Finance Academy
+# Contributing to Alpha Quant Academy
 
-Thank you for considering contributing to Python Finance Academy! 🎉
+Thank you for considering contributing to Alpha Quant Academy! 🎉
 
 We welcome contributions from the community. Here's how you can help:
 
@@ -31,8 +31,8 @@ We welcome contributions from the community. Here's how you can help:
 
 ### 1. Fork the Repository
 ```bash
-git clone https://github.com/your-username/python-finance-academy.git
-cd python-finance-academy
+git clone https://github.com/mangeshraut712/alpha-quant-academy.git
+cd alpha-quant-academy
 ```
 
 ### 2. Create a Branch
@@ -101,4 +101,4 @@ All contributors are recognized in our:
 - Start a Discussion
 - Email: opensource@example.com
 
-Thank you for helping make Python Finance Academy better for everyone! 🙏
+Thank you for helping make Alpha Quant Academy better for everyone! 🙏

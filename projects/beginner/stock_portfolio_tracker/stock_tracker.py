@@ -13,10 +13,11 @@ This project helps you:
 Run: python stock_tracker.py
 """
 
+from datetime import datetime
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from datetime import datetime, timedelta
 
 # ============================================================
 # SECTION 1: Portfolio Definition
@@ -105,7 +106,7 @@ def portfolio_summary(df):
 
 def plot_allocation(df):
     """Plot portfolio allocation pie chart."""
-    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+    _, axes = plt.subplots(1, 2, figsize=(14, 5))
     
     # Pie chart - Allocation
     colors = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6']
@@ -153,7 +154,7 @@ def plot_value_history():
     history.set_index('Date', inplace=True)
     
     # Plot
-    fig, ax = plt.subplots(figsize=(12, 6))
+    _, ax = plt.subplots(figsize=(12, 6))
     ax.plot(history.index, history['Value'], 'b-', linewidth=2)
     ax.fill_between(history.index, history['Value'], alpha=0.3)
     
@@ -168,7 +169,7 @@ def plot_value_history():
                 xy=(history.index[-1], current_value),
                 xytext=(10, 10), textcoords='offset points',
                 fontsize=12, fontweight='bold',
-                arrowprops=dict(arrowstyle='->', color='black'))
+                arrowprops={'arrowstyle': '->', 'color': 'black'})
     
     plt.tight_layout()
     plt.savefig('portfolio_history.png', dpi=150, bbox_inches='tight')

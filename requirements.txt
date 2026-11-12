@@ -1,4 +1,5 @@
 # Alpha Quant Academy - Requirements
+# Resolve on Python 3.12, as declared in .python-version.
 # =====================================
 
 # Core Scientific Stack

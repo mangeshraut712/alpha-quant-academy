@@ -216,7 +216,7 @@ The Alpha Quant Academy features a modern, premium web interface built with **Re
 
 **Production (GitHub Pages, free):** [https://mangeshraut712.github.io/alpha-quant-academy/](https://mangeshraut712.github.io/alpha-quant-academy/)
 
-The public UI is the Vite + React app in `webapp/`. GitHub Actions builds it the same way Vercel did (`cd webapp && npm install && npm run build`, output `webapp/dist`) and publishes that folder to Pages. Curriculum notebooks stay in this repo; they are not part of the static site.
+The public UI is the Vite + React app in `webapp/`. GitHub Actions builds it with `cd webapp && npm ci && npm run build` (output `webapp/dist`) and publishes that folder to Pages. Curriculum notebooks stay in this repo; they are not part of the static site.
 
 Local development:
 

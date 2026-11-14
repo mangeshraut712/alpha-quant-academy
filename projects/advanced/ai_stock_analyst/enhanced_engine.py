@@ -598,6 +598,10 @@ class PerformanceAnalytics:
     def record_trade(self, entry: float, exit: float, direction: str, 
                      size: float, duration_hours: float):
         """Record a completed trade"""
+        if entry == 0:
+            raise ValueError("entry price must be non-zero")
+        if size == 0:
+            raise ValueError("trade size must be non-zero")
         if direction == 'LONG':
             pnl = (exit - entry) * size / entry
         else:

@@ -54,7 +54,7 @@ def calculate_portfolio_value():
         cost_basis = shares * avg_cost
         current_value = shares * current_price
         gain_loss = current_value - cost_basis
-        return_pct = (gain_loss / cost_basis) * 100
+        return_pct = (gain_loss / cost_basis) * 100 if cost_basis else float("nan")
         
         data.append({
             'Ticker': ticker,
@@ -75,7 +75,7 @@ def portfolio_summary(df):
     total_cost = df['Cost Basis'].sum()
     total_value = df['Current Value'].sum()
     total_gain = df['Gain/Loss'].sum()
-    total_return = (total_gain / total_cost) * 100
+    total_return = (total_gain / total_cost) * 100 if total_cost else float("nan")
     
     print("\n" + "=" * 60)
     print("📊 PORTFOLIO SUMMARY")

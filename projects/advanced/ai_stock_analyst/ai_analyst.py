@@ -25,6 +25,16 @@ import yfinance as yf
 
 warnings.filterwarnings('ignore')
 
+
+def pe_valuation(pe: float, industry_avg_pe: float = 20) -> str:
+    """Label a P/E against the industry average: cheap below 0.8x, expensive above 1.5x."""
+    if pe > industry_avg_pe * 1.5:
+        return "Overvalued"
+    if pe < industry_avg_pe * 0.8:
+        return "Undervalued"
+    return "Fairly Valued"
+
+
 class AIStockAnalyst:
     """AI-powered stock analysis toolkit."""
     
@@ -126,8 +136,7 @@ class AIStockAnalyst:
         industry_avg_pe = 20  # Generic average
         
         if pe and pe > 0:
-            valuation = "Overvalued" if pe > industry_avg_pe * 1.5 else \
-                       "Fairly Valued" if pe <= industry_avg_pe * 1.2 else "Undervalued"
+            valuation = pe_valuation(pe, industry_avg_pe)
             print(f"P/E Assessment: {pe:.2f} vs Industry Avg ~{industry_avg_pe} → {valuation}")
         
         # Management Quality Indicators

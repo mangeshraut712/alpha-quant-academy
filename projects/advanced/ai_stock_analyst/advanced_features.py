@@ -188,7 +188,14 @@ class StockScreener:
         }
         
         # Calculate weighted total
-        total_score = sum(scores.values()) / len(scores)
+        weights = {
+            'Valuation': self.scoring_weights['valuation'],
+            'Growth': self.scoring_weights['growth'],
+            'Financial Health': self.scoring_weights['financial_health'],
+            'Profitability': self.scoring_weights['profitability'],
+            'Momentum': self.scoring_weights['momentum'],
+        }
+        total_score = sum(score * weights[category] for category, score in scores.items())
         
         # Display results
         print("📊 QUALITY SCORES (0-100)")

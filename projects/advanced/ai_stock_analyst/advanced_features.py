@@ -166,6 +166,17 @@ class StockScreener:
             'momentum': 0.10
         }
     
+    # One row per category: (display name, key in scoring_weights, scorer method).
+    # screen_stock() is driven entirely by this table, so a category cannot be
+    # weighted, scored and labelled from three separately maintained places.
+    categories = (
+        ('Valuation', 'valuation', '_score_valuation'),
+        ('Growth', 'growth', '_score_growth'),
+        ('Financial Health', 'financial_health', '_score_financial_health'),
+        ('Profitability', 'profitability', '_score_profitability'),
+        ('Momentum', 'momentum', '_score_momentum'),
+    )
+    
     def screen_stock(self, ticker, stock_data):
         """
         Screen a stock using multi-factor quality scoring.
@@ -178,17 +189,14 @@ class StockScreener:
         
         info = stock_data.info
         
-        # Calculate individual scores
-        scores = {
-            'Valuation': self._score_valuation(info),
-            'Growth': self._score_growth(info),
-            'Financial Health': self._score_financial_health(info),
-            'Profitability': self._score_profitability(info),
-            'Momentum': self._score_momentum(info)
-        }
-        
-        # Calculate weighted total
-        total_score = sum(scores.values()) / len(scores)
+        # One pass per category: score it and weight it from the same table row.
+        scores = {}
+        weighted_total = 0.0
+        for display_name, weight_key, scorer_name in self.categories:
+            score = getattr(self, scorer_name)(info)
+            scores[display_name] = score
+            weighted_total += score * self.scoring_weights[weight_key]
+        total_score = weighted_total
         
         # Display results
         print("📊 QUALITY SCORES (0-100)")

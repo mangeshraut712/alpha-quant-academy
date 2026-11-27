@@ -72,6 +72,9 @@ jobs:
       - name: Lint with Ruff
         run: ruff check . --ignore E501
 
+      - name: Unit tests
+        run: python -m pytest -q tests
+
   # Notebook Validation
   notebooks:
     name: Notebook Validation
